@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SafetyNotice from '../components/SafetyNotice.astro';
+---
+
+<Layout title="Seguridad y Mejores Prácticas | Gravocom">
+  <main>
+    <section class="safety-hero">
+      <div class="container">
+        <h1>Compromiso con la <span>Seguridad Láser</span></h1>
+        <p>Nuestros equipos de Fibra Óptica (Serie MZF) operan con tecnología Clase 4. Conocer y aplicar los protocolos de seguridad es vital para una producción eficiente y segura.</p>
+      </div>
+    </section>
+
+    <SafetyNotice />
+
+    <section class="technical-standards">
+      <div class="container">
+        <div class="grid">
+          <div class="text-content">
+            <h2>Estándares de <span>Protección</span></h2>
+            <p>
+              El marcado láser de metales y resinas genera reflexiones difusas y humos metálicos que requieren atención especializada. En Gravocom seguimos las recomendaciones internacionales para el manejo de fuentes <strong>Raycus y MaxPhotonics</strong>.
+            </p>
+            <div class="checklist">
+              <div class="check-item">
+                <strong>Longitud de Onda:</strong> Operación en 1064nm, invisible al ojo humano pero altamente energética.
+              </div>
+              <div class="check-item">
+                <strong>EPP Obligatorio:</strong> Uso de cascos, fajas y botas de seguridad en el área de trabajo según el Flyer oficial.
+              </div>
+              <div class="check-item">
+                <strong>Señalética:</strong> Instalación de avisos de advertencia en las estaciones de columna e integración.
+              </div>
+            </div>
+          </div>
+          <div class="image-placeholder">
+            <div class="safety-badge">LÁSER CLASE 4</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="training-cta">
+      <div class="container">
+        <div class="card-cta">
+          <h3>¿Necesitas capacitación para tu personal?</h3>
+          <p>Brindamos asesoría en mejores prácticas de grabado para asegurar que tu equipo de trabajo esté protegido mientras maximiza la trazabilidad.</p>
+          <a href="https://wa.me/525523007699" class="btn-orange">Solicitar Capacitación</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .safety-hero {
+    background: #0f172a;
+    padding: 6rem 5% 4rem;
+    text-align: center;
+    color: white;
+  }
+  .safety-hero h1 { font-size: 3rem; margin-bottom: 1.5rem; }
+  .safety-hero h1 span { color: #ff6b00; }
+  .safety-hero p { max-width: 800px; margin: 0 auto; color: #94a3b8; font-size: 1.2rem; }
+
+  .technical-standards { padding: 5rem 5%; background: white; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  
+  .grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+    align-items: center; 
+  }
+
+  .text-content h2 { font-size: 2.2rem; margin-bottom: 1.5rem; color: #0f172a; }
+  .text-content h2 span { color: #ff6b00; }
+  .text-content p { color: #475569; line-height: 1.7; margin-bottom: 2rem; }
+
+  .checklist { display: flex; flex-direction: column; gap: 1rem; }
+  .check-item { 
+    padding: 1rem; 
+    background: #f8fafc; 
+    border-left: 4px solid #ff6b00;
+    font-size: 0.95rem;
+  }
+
+  .safety-badge {
+    background: #ff6b00;
+    color: white;
+    padding: 2rem;
+    font-weight: 800;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(255,107,0,0.2);
+  }
+
+  .training-cta { padding: 4rem 5%; }
+  .card-cta { 
+    background: #1e293b; 
+    padding: 3rem; 
+    border-radius: 15px; 
+    text-align: center; 
+    color: white; 
+  }
+  .card-cta h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+  .card-cta p { color: #cbd5e1; margin-bottom: 2rem; }
+
+  .btn-orange {
+    background: #ff6b00;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; gap: 2rem; }
+    .safety-hero h1 { font-size: 2.2rem; }
+  }
+</style>

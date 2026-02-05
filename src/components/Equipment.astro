@@ -1,0 +1,129 @@
+---
+const products = [
+  {
+    title: "Marcadora Láser Fibra Óptica",
+    series: "Serie MZF 30N / 50N / 100N",
+    source: "Raycus / MaxPhotonics",
+    features: ["Marcado profundo", "Integración en línea", "Enfriamiento por aire"],
+    image: "/assets/fibra-laser.jpg", // Reemplazar con foto del flyer
+    primary: true
+  },
+  {
+    title: "Lector de Código de Barras",
+    series: "Inalámbrico 1D/2D",
+    source: "Protección IP54",
+    features: ["QR y Datamatrix", "Resistente a golpes", "Bluetooth / WiFi"],
+    image: "/assets/lector.jpg",
+    primary: false
+  }
+];
+const phone = "525523007699"; 
+const message = encodeURIComponent("Hola, me interesa recibir información y una cotización sobre los equipos de Gravocom.");
+const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+---
+
+<section class="equipment">
+  <div class="container">
+    <div class="section-title">
+      <h2>Equipos de <span>Alta Performance</span></h2>
+      <p>Tecnología de punta para integración industrial y estaciones de trabajo independientes.</p>
+    </div>
+
+    <div class="equipment-grid">
+      {products.map(p => (
+        <div class="product-card">
+          <div class="product-image">
+            <img src={p.image} alt={p.title} />
+            {p.primary && <span class="tag-orange">Top Ventas</span>}
+          </div>
+          
+          <div class="product-info">
+            <span class="series">{p.series}</span>
+            <h3>{p.title}</h3>
+            
+            <div class="specs">
+              <p><strong>Fuente:</strong> {p.source}</p>
+              <ul>
+                {p.features.map(f => (
+                  <li><span>✓</span> {f}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="card-actions">
+              <a href={`/productos/${p.title.toLowerCase().replace(/ /g, '-')}`} class="btn-details">Ficha Técnica</a>
+              <a href={whatsappUrl} target="_blank" class="btn-whatsapp">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .equipment { padding: 5rem 5%; background: #f1f5f9; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  
+  .section-title { text-align: center; margin-bottom: 4rem; }
+  .section-title h2 { font-size: 2.5rem; color: #0f172a; }
+  .section-title h2 span { color: #ff6b00; }
+
+  .equipment-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 2.5rem; 
+  }
+
+  .product-card { 
+    background: white; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  }
+
+  .product-image { position: relative; height: 250px; background: #e2e8f0; }
+  .product-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  .tag-orange { 
+    position: absolute; top: 1rem; right: 1rem; 
+    background: #ff6b00; color: white; padding: 0.3rem 0.8rem; 
+    font-size: 0.75rem; font-weight: bold; border-radius: 4px;
+  }
+
+  .product-info { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+  .series { color: #ff6b00; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
+  .product-info h3 { font-size: 1.5rem; margin: 0.5rem 0 1.5rem; color: #0f172a; }
+
+  .specs { margin-bottom: 2rem; flex-grow: 1; }
+  .specs p { font-size: 0.9rem; color: #475569; margin-bottom: 1rem; }
+  .specs ul { list-style: none; padding: 0; }
+  .specs li { font-size: 0.95rem; color: #1e293b; margin-bottom: 0.5rem; display: flex; gap: 8px; }
+  .specs li span { color: #ff6b00; font-weight: bold; }
+
+  .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  
+  .btn-details { 
+    text-align: center; padding: 0.8rem; border: 1px solid #cbd5e1; 
+    border-radius: 6px; text-decoration: none; color: #334155; 
+    font-weight: 600; transition: 0.3s;
+  }
+
+  .btn-whatsapp { 
+    text-align: center; padding: 0.8rem; background: #ff6b00; 
+    border-radius: 6px; text-decoration: none; color: white; 
+    font-weight: bold; transition: 0.3s;
+  }
+
+  .btn-whatsapp:hover { background: #e66000; }
+  .btn-details:hover { background: #f8fafc; border-color: #ff6b00; color: #ff6b00; }
+
+  @media (max-width: 480px) {
+    .equipment-grid { grid-template-columns: 1fr; }
+    .card-actions { grid-template-columns: 1fr; }
+  }
+</style>

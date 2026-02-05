@@ -1,0 +1,20 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro'; 
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | Mi Papelería</title>
+</head>
+<body>
+    <Navbar />
+    <slot />
+    <Footer />
+</body>
+</html>

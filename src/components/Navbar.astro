@@ -1,0 +1,139 @@
+---
+// src/components/Navbar.astro
+---
+<nav class="navbar">
+  <div class="logo">
+    <a href="/">
+      <img src="/assets/gravocom-logo-white.svg" alt="Gravocom Logo" />
+    </a>
+  </div>
+
+  <button class="mobile-menu-btn" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  
+  <ul class="nav-links">
+    <li><a href="/maquinaria">Maquinaria</a></li>
+    <li><a href="/software">Software</a></li>
+    <li><a href="/soporte">Soporte Técnico</a></li>
+    <li class="mobile-only">
+      <a href="/cotizar" class="btn-quote-mobile">Solicitar Cotización</a>
+    </li>
+  </ul>
+
+  <div class="cta desktop-only">
+    <a href="/cotizar" class="btn-quote">Solicitar Cotización</a>
+  </div>
+</nav>
+
+<script>
+  // Lógica para abrir/cerrar menú en móvil
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuBtn?.addEventListener('click', () => {
+    navLinks?.classList.toggle('open');
+    menuBtn?.classList.toggle('active');
+  });
+</script>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 5%;
+    background: #0f172a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 70px;
+  }
+
+  .logo img { height: 55px; width: auto; }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #f1f5f9;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: 0.3s;
+  }
+
+  .nav-links a:hover { color: #ff6b00; }
+
+  .btn-quote {
+    background: #ff6b00;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .bar {
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    transition: 0.4s;
+  }
+
+  .mobile-only { display: none; }
+
+  @media (max-width: 768px) {
+    .mobile-menu-btn { display: flex; z-index: 1100; }
+    .desktop-only { display: none; }
+    .mobile-only { display: block; width: 100%; }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%; 
+      width: 80%;
+      height: 100vh;
+      background: #1e293b;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: 0.5s ease;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.open { right: 0; }
+
+    .nav-links a { font-size: 1.2rem; }
+
+    .btn-quote-mobile {
+      background: #ff6b00;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .mobile-menu-btn.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 5px); }
+    .mobile-menu-btn.active .bar:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -5px); }
+  }
+</style>

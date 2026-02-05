@@ -1,0 +1,92 @@
+---
+const features = [
+  {
+    icon: "⚙️", 
+    title: "Asesoría de Aplicaciones",
+    desc: "Expertos en programas y códigos 1D/2D."
+  },
+  {
+    icon: "🛡️", 
+    title: "Seguridad y Soporte",
+    desc: "Mejores prácticas y servicio técnico local."
+  },
+  {
+    icon: "⚡", 
+    title: "Componentes Premium",
+    desc: "Fuentes Raycus o MaxPhotonics integradas."
+  }
+];
+---
+
+<section class="trust-bar">
+  <div class="container">
+    {features.map(f => (
+      <div class="trust-item">
+        <div class="icon-box">{f.icon}</div>
+        <div class="text-box">
+          <h4>{f.title}</h4>
+          <p>{f.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .trust-bar {
+    background: #f1f5f9;
+    padding: 2rem 5%;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .icon-box {
+    font-size: 1.5rem;
+    background: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #ff6b00; 
+  }
+
+  .text-box h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  .text-box p {
+    margin: 2px 0 0;
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .trust-item {
+        justify-content: center;
+        text-align: left;
+    }
+  }
+</style>

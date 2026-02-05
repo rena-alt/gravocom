@@ -1,0 +1,92 @@
+---
+// src/components/Hero.astro
+---
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="content">
+    <span class="badge">Expertos en Marcado y Asesoría</span>
+    <h1>Precisión Láser para la <br><span>Industria</span></h1>
+    <p>
+      Fabricantes de equipos de marcado y limpieza láser. Especialistas en trazabilidad, 
+      códigos 1D/2D y seguridad industrial.
+    </p>
+    
+    <div class="actions">
+      <a href="/productos" class="btn-main">Ver Equipos</a>
+      <a href="/contacto" class="btn-sec">Solicitar Asesoría</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px; 
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)), 
+                url('/assets/industrial-craft.jpg') no-repeat center center/cover;
+    color: white;
+    box-sizing: border-box;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 800px;
+    z-index: 2;
+    text-align: center; 
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 10px;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column; 
+    gap: 12px;
+    width: 100%;
+    max-width: 325px;
+    margin: 0 auto;
+  }
+
+  .btn-main, .btn-sec {
+    display: block;
+    padding: 14px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .btn-main { background: #ff6b00; color: white; border: none; }
+  .btn-sec { border: 2px solid #ff6b00; color: #ff6b00; }
+
+  @media (min-width: 768px) {
+    .hero {
+      text-align: left;
+      justify-content: flex-start;
+      padding: 0 10%;
+    }
+    .content { text-align: left; }
+    h1 { font-size: 3.5rem; }
+    .actions {
+      flex-direction: row;
+      max-width: none;
+      margin: 0;
+    }
+    .btn-main, .btn-sec { width: auto; }
+  }
+</style>

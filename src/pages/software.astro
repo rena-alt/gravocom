@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Software e Integración">
+  <section class="software-hero">
+    <div class="container">
+      <h1>Software de <span>Control y Diseño</span></h1>
+      <p>Interfaces intuitivas y potentes para el marcado de precisión y la trazabilidad industrial.</p>
+    </div>
+  </section>
+
+  <section class="software-details">
+    <div class="container grid">
+      <div class="feature-card">
+        <h3>Trazabilidad Avanzada</h3>
+        <p>Generación automática de códigos 1D y 2D (QR, Datamatrix) vinculados a sus procesos de producción.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Compatibilidad Total</h3>
+        <p>Importación de archivos vectoriales (AI, DXF, PLT) y formatos de imagen para grabados complejos.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Asesoría en Programas</h3>
+        <p>Desarrollamos aplicaciones a medida para optimizar sus tiempos de grabado y asegurar la calidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="support-cta">
+    <div class="container">
+      <div class="cta-box">
+        <h2>¿Necesitas ayuda con tu configuración?</h2>
+        <p>Brindamos soporte técnico local y capacitación para el uso seguro de nuestros programas.</p>
+        <a href="/contacto" class="btn-orange">Hablar con Soporte</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .software-hero {
+    background: #0f172a;
+    padding: 6rem 5%;
+    text-align: center;
+    color: white;
+  }
+  .software-hero h1 { font-size: 3rem; }
+  .software-hero h1 span { color: #ff6b00; }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 4rem 0;
+  }
+
+  .feature-card {
+    padding: 2rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-top: 4px solid #ff6b00;
+  }
+
+  .support-cta {
+    padding: 4rem 5%;
+    background: #fff;
+  }
+
+  .cta-box {
+    background: #1e293b;
+    color: white;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .btn-orange {
+    display: inline-block;
+    background: #ff6b00;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1.5rem;
+  }
+</style>

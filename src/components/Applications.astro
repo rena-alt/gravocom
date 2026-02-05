@@ -1,0 +1,184 @@
+---
+const apps = [
+  {
+    title: "Industria Metalmecánica",
+    items: ["Herramentales", "Metales con relieve", "Profundidad en metales", "Carburo de tungsteno"],
+    icon: "🏗️"
+  },
+  {
+    title: "Electrónica y Tecnología",
+    items: ["Celulares", "Teclados", "Resinas", "Placas de circuitos"],
+    icon: "📱"
+  },
+  {
+    title: "Seguridad Industrial (EPP)",
+    items: ["Cascos", "Fajas", "Botas de seguridad", "Etiquetas para cables"],
+    icon: "🦺"
+  },
+  {
+    title: "Joyería y Especialidades",
+    items: ["Anillos", "Piezas cilíndricas", "Cerámicas", "Caucho"],
+    icon: "💍"
+  }
+];
+---
+
+<section class="applications" id="soluciones">
+  <div class="container">
+    <div class="header">
+      <span class="pre-title">Versatilidad Sin Límites</span>
+      <h2>Aplicaciones de <span>Marcado Láser</span></h2>
+      <p>Nuestra tecnología de fibra óptica permite trabajar sobre una amplia gama de materiales con precisión micrométrica.</p>
+    </div>
+
+    <div class="app-grid">
+      {apps.map(app => (
+        <div class="app-card">
+          <div class="card-icon">{app.icon}</div>
+          <h3>{app.title}</h3>
+          <ul>
+            {app.items.map(item => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="materials-tags">
+      <span>Metales Ferrosos</span>
+      <span>No Ferrosos</span>
+      <span>Plásticos</span>
+      <span>Resinas</span>
+      <span>Cerámicas</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .applications {
+    padding: 6rem 5%;
+    background-color: #ffffff;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .pre-title {
+    color: #ff6b00;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+  }
+
+  .header h2 {
+    font-size: 2.8rem;
+    color: #0f172a;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .header h2 span {
+    color: #ff6b00;
+  }
+
+  .header p {
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .app-card {
+    background: #f8fafc;
+    padding: 2.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+  }
+
+  .app-card:hover {
+    transform: translateY(-10px);
+    border-color: #ff6b00;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .app-card h3 {
+    color: #0f172a;
+    font-size: 1.25rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .app-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: #ff6b00;
+  }
+
+  .app-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .app-card li {
+    color: #475569;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .app-card li::before {
+    content: "→";
+    color: #ff6b00;
+    margin-right: 8px;
+    font-weight: bold;
+  }
+
+  .materials-tags {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .materials-tags span {
+    background: #0f172a;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .header h2 { font-size: 2rem; }
+    .app-card { padding: 1.5rem; }
+  }
+</style>
