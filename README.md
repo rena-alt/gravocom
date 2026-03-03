@@ -1,43 +1,21 @@
-# Astro Starter Kit: Minimal
+---
 
-```sh
-npm create astro@latest -- --template minimal
-```
+## 🎯 Project Overview
+The primary goal of this platform is to showcase high-precision technology—specifically **Fiber Laser Marking (MZF Series)** and **Industrial Scanning Hardware (IP54)**—to the aerospace, automotive, and manufacturing sectors.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 🛠️ Refactoring & Evolution (March 2026)
 
-Inside of your Astro project, you'll see the following folders and files:
+I performed a complete architectural and visual overhaul of the Gravocom platform to align it with modern industrial B2B standards.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Key Enhancements:
+* **Modern Tech Stack:** Migrated legacy styles to a utility-first approach using **Tailwind CSS**, ensuring a consistent "Industrial Heavy Duty" design system (Orange/Slate palette).
+* **Astro Content Collections:** Implemented type-safe data fetching for the product catalog (Fiber Laser MZF Series & Traceability Accessories), improving developer experience and preventing runtime errors.
+* **New Specialized Landing Pages:**
+    * `/productos/marcado-laser`: Focused on high-power fiber laser solutions.
+    * `/productos/accesorios-trazabilidad`: Dedicated to IP54-rated industrial scanning hardware.
+* **Conversion-Oriented Components:** * Refactored the **Hero Section** with high-impact visual hierarchy.
+    * Developed a dynamic **ContactForm** integrated with Formspree for lead generation.
+    * Created a **ContactBanner** featuring direct access to the Business Manager’s technical advisory.
+* **Performance & SEO:** Optimized Core Web Vitals through Astro's partial hydration and static site generation (SSG).

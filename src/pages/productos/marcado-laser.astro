@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ContactBanner from '../../components/ContactBanner.astro';
+
+// Filtramos solo los productos que pertenecen a esta categoría
+const productosLaser = await getCollection('productos', ({ data }) => {
+  return data.category === 'Marcado Láser';
+});
+---
+
+<Layout title="Sistemas de Marcado Láser | Gravocom">
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    
+    <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8 uppercase font-bold tracking-widest">
+      <a href="/" class="hover:text-orange-500 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="/productos" class="hover:text-orange-500 transition-colors">Productos</a>
+      <span>/</span>
+      <span class="text-slate-900">Marcado Láser</span>
+    </nav>
+
+    <header class="mb-16 border-l-8 border-l-orange-500 pl-8">
+      <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-4 uppercase tracking-tighter">
+        Sistemas de <span class="text-orange-500">Marcado Láser</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl leading-relaxed">
+        Tecnología de fibra óptica de alta precisión diseñada para integración en líneas de producción, grabado profundo y trazabilidad permanente en metales y plásticos industriales.
+      </p>
+    </header>
+
+    <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+      {productosLaser.map(producto => (
+        <article class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300 flex flex-col">
+          
+          <div class="aspect-square bg-slate-100 flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/5 transition-colors"></div>
+            <span class="text-slate-400 font-bold uppercase tracking-widest text-xs">Visualizar {producto.data.title}</span>
+          </div>
+
+          <div class="p-8 flex-1 flex flex-col">
+            <div class="flex items-center gap-2 mb-3">
+               <span class="w-1.5 h-4 bg-orange-500 rounded-full"></span>
+               <span class="text-xs font-black text-orange-500 uppercase tracking-widest">Fibra Óptica</span>
+            </div>
+            
+            <h2 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-orange-600 transition-colors">
+              {producto.data.title}
+            </h2>
+            
+            <p class="text-slate-600 text-sm mb-6 line-clamp-3 leading-relaxed">
+              {producto.data.description}
+            </p>
+
+            <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
+              <a href={`/productos/${producto.slug}`} class="bg-slate-900 text-white text-xs font-bold px-6 py-3 rounded-lg hover:bg-orange-500 transition-colors uppercase tracking-widest shadow-lg shadow-slate-200">
+                Ficha Técnica
+              </a>
+              
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+                ID: {producto.slug.split('-').pop()}
+              </span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="bg-slate-50 rounded-3xl p-8 md:p-12 mb-20 grid md:grid-cols-2 gap-12 items-center border border-slate-200">
+      <div>
+        <h3 class="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight">¿Por qué elegir nuestra Serie MZF?</h3>
+        <ul class="space-y-4">
+          {[
+            "Fuentes Raycus / MaxPhotonics de larga vida útil (100k hrs).",
+            "Sistemas de enfriamiento por aire altamente eficientes.",
+            "Fácil integración en software de trazabilidad industrial.",
+            "Soporte técnico especializado en México."
+          ].map(item => (
+            <li class="flex items-start gap-3 text-slate-700">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-medium">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="bg-white p-4 rounded-2xl shadow-inner border border-slate-200">
+         <div class="aspect-video bg-slate-900 rounded-xl flex items-center justify-center text-orange-500 font-black italic tracking-tighter text-3xl">
+            GRAVOCOM <span class="text-white ml-2">LÁSER</span>
+         </div>
+      </div>
+    </section>
+
+    <ContactBanner />
+  </main>
+</Layout>

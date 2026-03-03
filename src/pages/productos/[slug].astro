@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import EquipmentTable from '../../components/EquipmentTable.astro';
+import ContactBanner from '../../components/ContactBanner.astro';
+
+export async function getStaticPaths() {
+  const productos = await getCollection('productos');
+  
+  return productos.map((producto) => ({
+    params: { slug: producto.slug },
+    props: { producto },
+  }));
+}
+
+const { producto } = Astro.props;
+const { Content } = await producto.render();
+---
+
+<Layout title={producto.data.title}>
+  <main class="max-w-4xl mx-auto p-6">
+    <nav class="mb-8 text-sm text-slate-500">
+      <a href="/productos" class="hover:text-blue-600">Catálogo</a> 
+      <span>/</span> 
+      <span class="text-slate-800">{producto.data.category}</span>
+    </nav>
+
+    <h1 class="text-4xl font-bold text-slate-900 mb-4">
+      {producto.data.title}
+    </h1>
+    
+    <p class="text-xl text-slate-600 mb-8 italic">
+      {producto.data.description}
+    </p>
+
+    <EquipmentTable 
+      title="Especificaciones Técnicas"
+      headers={["Parámetro", "Detalle"]}
+      rows={producto.data.specs}
+    />
+
+    <article class="prose prose-slate max-w-none my-12">
+      <Content />
+    </article>
+
+    <ContactBanner />
+  </main>
+</Layout>

@@ -1,184 +1,94 @@
 ---
-const apps = [
+// src/components/Applications.astro
+const applications = [
   {
-    title: "Industria Metalmecánica",
-    items: ["Herramentales", "Metales con relieve", "Profundidad en metales", "Carburo de tungsteno"],
-    icon: "🏗️"
+    title: "Industria Automotriz",
+    description: "Marcado de números de serie (VIN), componentes de motor y trazabilidad de partes críticas.",
+    icon: "🚗",
+    tags: ["Acero", "Aluminio", "Plásticos"]
   },
   {
-    title: "Electrónica y Tecnología",
-    items: ["Celulares", "Teclados", "Resinas", "Placas de circuitos"],
-    icon: "📱"
+    title: "Herramental y Moldes",
+    description: "Grabado profundo en moldes de inyección y personalización de herramientas de corte.",
+    icon: "🛠️",
+    tags: ["Acero Inox", "Titanio", "Cromo"]
   },
   {
-    title: "Seguridad Industrial (EPP)",
-    items: ["Cascos", "Fajas", "Botas de seguridad", "Etiquetas para cables"],
-    icon: "🦺"
+    title: "Aerospace & Defensa",
+    description: "Marcado de turbinas, fuselajes y componentes críticos con trazabilidad absoluta bajo estándares AS9100.",
+    icon: "🚀", 
+    tags: ["Inconel", "Aluminio 7075", "Titanio"]
   },
   {
-    title: "Joyería y Especialidades",
-    items: ["Anillos", "Piezas cilíndricas", "Cerámicas", "Caucho"],
-    icon: "💍"
+    title: "Electrónica y Chips",
+    description: "Micro-marcado en tarjetas de circuito (PCB) y carcasas de componentes electrónicos.",
+    icon: "🔌",
+    tags: ["Delrin", "ABS", "Silicio"]
   }
 ];
 ---
 
-<section class="applications" id="soluciones">
-  <div class="container">
-    <div class="header">
-      <span class="pre-title">Versatilidad Sin Límites</span>
-      <h2>Aplicaciones de <span>Marcado Láser</span></h2>
-      <p>Nuestra tecnología de fibra óptica permite trabajar sobre una amplia gama de materiales con precisión micrométrica.</p>
+<section class="py-24 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-6">
+    
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-8 h-1 bg-orange-500"></span>
+          <span class="text-orange-600 font-black uppercase tracking-widest text-xs">Versatilidad Técnica</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter leading-none">
+          Aplicaciones <br /> <span class="text-orange-500 italic">Multimaterial</span>
+        </h2>
+      </div>
+      <p class="text-slate-500 font-medium max-w-sm border-l-2 border-slate-200 pl-4 text-sm">
+        Nuestros sistemas MZF están optimizados para integrarse en cualquier flujo de trabajo industrial, garantizando legibilidad permanente.
+      </p>
     </div>
 
-    <div class="app-grid">
-      {apps.map(app => (
-        <div class="app-card">
-          <div class="card-icon">{app.icon}</div>
-          <h3>{app.title}</h3>
-          <ul>
-            {app.items.map(item => (
-              <li>{item}</li>
-            ))}
-          </ul>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {applications.map((app) => (
+        <div class="group relative bg-slate-50 border border-slate-200 p-8 rounded-2xl hover:bg-slate-950 transition-all duration-500 overflow-hidden">
+          
+          <div class="absolute -bottom-4 -right-4 text-8xl opacity-5 group-hover:opacity-10 transition-opacity grayscale group-hover:grayscale-0">
+            {app.icon}
+          </div>
+
+          <div class="relative z-10">
+            <div class="w-12 h-12 bg-white shadow-sm rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:bg-orange-500 group-hover:scale-110 transition-all duration-500">
+              {app.icon}
+            </div>
+            
+            <h3 class="text-xl font-black text-slate-900 group-hover:text-white mb-3 uppercase tracking-tight transition-colors">
+              {app.title}
+            </h3>
+            
+            <p class="text-slate-600 group-hover:text-slate-400 text-sm leading-relaxed mb-6 transition-colors">
+              {app.description}
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              {app.tags.map(tag => (
+                <span class="text-[10px] font-bold px-2 py-1 rounded bg-slate-200 text-slate-600 group-hover:bg-orange-500/20 group-hover:text-orange-400 transition-colors uppercase tracking-widest">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="absolute bottom-0 left-0 w-0 h-1 bg-orange-500 group-hover:w-full transition-all duration-500"></div>
         </div>
       ))}
     </div>
 
-    <div class="materials-tags">
-      <span>Metales Ferrosos</span>
-      <span>No Ferrosos</span>
-      <span>Plásticos</span>
-      <span>Resinas</span>
-      <span>Cerámicas</span>
+    <div class="mt-16 text-center">
+      <p class="text-slate-400 text-sm font-bold uppercase tracking-[0.2em] mb-4">¿No ves tu industria aquí?</p>
+      <a href="/contacto" class="inline-flex items-center gap-2 text-slate-900 font-black hover:text-orange-500 transition-colors uppercase text-sm border-b-2 border-slate-900 hover:border-orange-500 pb-1">
+        Consultar viabilidad técnica
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
     </div>
   </div>
 </section>
-
-<style>
-  .applications {
-    padding: 6rem 5%;
-    background-color: #ffffff;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .pre-title {
-    color: #ff6b00;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-  }
-
-  .header h2 {
-    font-size: 2.8rem;
-    color: #0f172a;
-    margin: 0.5rem 0 1rem;
-  }
-
-  .header h2 span {
-    color: #ff6b00;
-  }
-
-  .header p {
-    color: #64748b;
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 1.1rem;
-  }
-
-  .app-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-  }
-
-  .app-card {
-    background: #f8fafc;
-    padding: 2.5rem;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    border: 1px solid #e2e8f0;
-  }
-
-  .app-card:hover {
-    transform: translateY(-10px);
-    border-color: #ff6b00;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  }
-
-  .card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    display: block;
-  }
-
-  .app-card h3 {
-    color: #0f172a;
-    font-size: 1.25rem;
-    margin-bottom: 1.2rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-  }
-
-  .app-card h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background: #ff6b00;
-  }
-
-  .app-card ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .app-card li {
-    color: #475569;
-    margin-bottom: 0.6rem;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-  }
-
-  .app-card li::before {
-    content: "→";
-    color: #ff6b00;
-    margin-right: 8px;
-    font-weight: bold;
-  }
-
-  .materials-tags {
-    margin-top: 4rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .materials-tags span {
-    background: #0f172a;
-    color: white;
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
-
-  @media (max-width: 768px) {
-    .header h2 { font-size: 2rem; }
-    .app-card { padding: 1.5rem; }
-  }
-</style>

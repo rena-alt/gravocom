@@ -1,11 +1,13 @@
 ---
+// src/components/Equipment.astro
 const products = [
   {
     title: "Marcadora Láser Fibra Óptica",
     series: "Serie MZF 30N / 50N / 100N",
     source: "Raycus / MaxPhotonics",
     features: ["Marcado profundo", "Integración en línea", "Enfriamiento por aire"],
-    image: "/assets/fibra-laser.jpg", // Reemplazar con foto del flyer
+    image: "/assets/fibra-laser.jpg", 
+    url: "marcado-laser",
     primary: true
   },
   {
@@ -14,46 +16,83 @@ const products = [
     source: "Protección IP54",
     features: ["QR y Datamatrix", "Resistente a golpes", "Bluetooth / WiFi"],
     image: "/assets/lector.jpg",
+    url: "trazabilidad",
     primary: false
   }
 ];
+
 const phone = "525523007699"; 
 const message = encodeURIComponent("Hola, me interesa recibir información y una cotización sobre los equipos de Gravocom.");
 const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
 ---
 
-<section class="equipment">
-  <div class="container">
-    <div class="section-title">
-      <h2>Equipos de <span>Alta Performance</span></h2>
-      <p>Tecnología de punta para integración industrial y estaciones de trabajo independientes.</p>
+<section class="py-24 bg-slate-50 relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-50"></div>
+
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <div class="inline-block bg-orange-500/10 text-orange-600 px-4 py-1 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-4">
+        Catálogo 2026
+      </div>
+      <h2 class="text-4xl md:text-5xl font-black text-slate-900 uppercase tracking-tighter mb-6">
+        Equipos de <span class="text-orange-500 italic">Alta Performance</span>
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        Tecnología de punta para integración industrial y estaciones de trabajo independientes con soporte técnico especializado.
+      </p>
     </div>
 
-    <div class="equipment-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
       {products.map(p => (
-        <div class="product-card">
-          <div class="product-image">
-            <img src={p.image} alt={p.title} />
-            {p.primary && <span class="tag-orange">Top Ventas</span>}
+        <div class={`group relative bg-white border-2 transition-all duration-500 rounded-3xl overflow-hidden flex flex-col ${p.primary ? 'border-orange-500 shadow-2xl shadow-orange-500/10 scale-105 z-10' : 'border-slate-200 hover:border-slate-900 shadow-xl'}`}>
+          
+          <div class="relative h-64 bg-slate-200 overflow-hidden">
+            <img src={p.image} alt={p.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
+            
+            {p.primary && (
+              <span class="absolute top-4 right-4 bg-orange-500 text-white text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-widest animate-bounce">
+                Más Vendido
+              </span>
+            )}
+            
+            <div class="absolute bottom-4 left-6">
+              <span class="text-orange-400 text-xs font-black uppercase tracking-widest">{p.series}</span>
+            </div>
           </div>
           
-          <div class="product-info">
-            <span class="series">{p.series}</span>
-            <h3>{p.title}</h3>
+          <div class="p-8 flex-grow flex flex-col">
+            <h3 class="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight group-hover:text-orange-500 transition-colors">
+              {p.title}
+            </h3>
             
-            <div class="specs">
-              <p><strong>Fuente:</strong> {p.source}</p>
-              <ul>
+            <div class="space-y-4 mb-8 flex-grow">
+              <div class="flex items-center gap-2 pb-3 border-b border-slate-100">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tecnología:</span>
+                <span class="text-xs font-bold text-slate-700 italic">{p.source}</span>
+              </div>
+              
+              <ul class="space-y-2">
                 {p.features.map(f => (
-                  <li><span>✓</span> {f}</li>
+                  <li class="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-orange-500" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    {f}
+                  </li>
                 ))}
               </ul>
             </div>
 
-            <div class="card-actions">
-              <a href={`/productos/${p.title.toLowerCase().replace(/ /g, '-')}`} class="btn-details">Ficha Técnica</a>
-              <a href={whatsappUrl} target="_blank" class="btn-whatsapp">
-                Cotizar por WhatsApp
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-auto">
+              <a href={`/productos/${p.url}`} class="flex items-center justify-center gap-2 text-xs font-black uppercase tracking-widest border-2 border-slate-900 py-4 rounded-xl hover:bg-slate-900 hover:text-white transition-all">
+                Ficha Técnica
+              </a>
+              <a href={whatsappUrl} target="_blank" class="flex items-center justify-center gap-2 text-xs font-black uppercase tracking-widest bg-orange-500 text-white py-4 rounded-xl hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/30">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.316 1.592 5.43 0 9.856-4.426 9.858-9.855.002-5.43-4.425-9.856-9.855-9.856-5.431 0-9.856 4.426-9.858 9.856-.001 1.938.529 3.839 1.546 5.461l-1.015 3.703 3.808-.999z"/>
+                </svg>
+                Cotizar
               </a>
             </div>
           </div>
@@ -62,68 +101,3 @@ const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
     </div>
   </div>
 </section>
-
-<style>
-  .equipment { padding: 5rem 5%; background: #f1f5f9; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  
-  .section-title { text-align: center; margin-bottom: 4rem; }
-  .section-title h2 { font-size: 2.5rem; color: #0f172a; }
-  .section-title h2 span { color: #ff6b00; }
-
-  .equipment-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-    gap: 2.5rem; 
-  }
-
-  .product-card { 
-    background: white; 
-    border-radius: 12px; 
-    overflow: hidden; 
-    display: flex; 
-    flex-direction: column;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-  }
-
-  .product-image { position: relative; height: 250px; background: #e2e8f0; }
-  .product-image img { width: 100%; height: 100%; object-fit: cover; }
-
-  .tag-orange { 
-    position: absolute; top: 1rem; right: 1rem; 
-    background: #ff6b00; color: white; padding: 0.3rem 0.8rem; 
-    font-size: 0.75rem; font-weight: bold; border-radius: 4px;
-  }
-
-  .product-info { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
-  .series { color: #ff6b00; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
-  .product-info h3 { font-size: 1.5rem; margin: 0.5rem 0 1.5rem; color: #0f172a; }
-
-  .specs { margin-bottom: 2rem; flex-grow: 1; }
-  .specs p { font-size: 0.9rem; color: #475569; margin-bottom: 1rem; }
-  .specs ul { list-style: none; padding: 0; }
-  .specs li { font-size: 0.95rem; color: #1e293b; margin-bottom: 0.5rem; display: flex; gap: 8px; }
-  .specs li span { color: #ff6b00; font-weight: bold; }
-
-  .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  
-  .btn-details { 
-    text-align: center; padding: 0.8rem; border: 1px solid #cbd5e1; 
-    border-radius: 6px; text-decoration: none; color: #334155; 
-    font-weight: 600; transition: 0.3s;
-  }
-
-  .btn-whatsapp { 
-    text-align: center; padding: 0.8rem; background: #ff6b00; 
-    border-radius: 6px; text-decoration: none; color: white; 
-    font-weight: bold; transition: 0.3s;
-  }
-
-  .btn-whatsapp:hover { background: #e66000; }
-  .btn-details:hover { background: #f8fafc; border-color: #ff6b00; color: #ff6b00; }
-
-  @media (max-width: 480px) {
-    .equipment-grid { grid-template-columns: 1fr; }
-    .card-actions { grid-template-columns: 1fr; }
-  }
-</style>

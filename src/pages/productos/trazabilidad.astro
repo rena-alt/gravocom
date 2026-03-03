@@ -1,0 +1,92 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ContactBanner from '../../components/ContactBanner.astro';
+
+// Filtramos solo los productos de la categoría de accesorios
+const accesorios = await getCollection('productos', ({ data }) => {
+  return data.category === 'Accesorios de Trazabilidad';
+});
+---
+
+<Layout title="Accesorios de Trazabilidad Industrial | Gravocom">
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    
+    <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8 uppercase font-bold tracking-widest">
+      <a href="/" class="hover:text-orange-500 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="/productos" class="hover:text-orange-500 transition-colors">Productos</a>
+      <span>/</span>
+      <span class="text-slate-900">Accesorios</span>
+    </nav>
+
+    <header class="mb-16 border-l-8 border-l-slate-900 pl-8">
+      <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-4 uppercase tracking-tighter">
+        Accesorios de <span class="text-orange-500">Trazabilidad</span>
+      </h1>
+      <p class="text-xl text-slate-600 max-w-3xl leading-relaxed">
+        Complementos robustos diseñados para el escaneo y validación de datos en entornos de producción exigentes. Lectura precisa de códigos 1D y 2D (Data Matrix/QR).
+      </p>
+    </header>
+
+    <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+      {accesorios.map(producto => (
+        <article class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-slate-900 hover:shadow-2xl transition-all duration-300 flex flex-col">
+          
+          <div class="aspect-square bg-slate-50 flex items-center justify-center relative">
+             <div class="absolute top-4 left-4 bg-slate-900 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                Grado IP54
+             </div>
+             <span class="text-slate-300 font-bold uppercase tracking-widest text-xs">Imagen: {producto.data.title}</span>
+          </div>
+
+          <div class="p-8 flex-1 flex flex-col">
+            <h2 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-orange-500 transition-colors">
+              {producto.data.title}
+            </h2>
+            
+            <p class="text-slate-600 text-sm mb-6 line-clamp-3 leading-relaxed">
+              {producto.data.description}
+            </p>
+
+            <ul class="mb-8 space-y-2">
+               {producto.data.specs.slice(0, 3).map(spec => (
+                 <li class="text-xs font-bold text-slate-500 flex items-center gap-2">
+                    <span class="w-1 h-1 bg-orange-500 rounded-full"></span>
+                    {spec[0]}: <span class="text-slate-900">{spec[1]}</span>
+                 </li>
+               ))}
+            </ul>
+
+            <div class="mt-auto pt-6 border-t border-slate-100">
+              <a href={`/productos/${producto.slug}`} class="block text-center bg-orange-500 text-white text-xs font-black px-6 py-4 rounded-lg hover:bg-slate-900 transition-colors uppercase tracking-widest">
+                Ver Ficha Técnica
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="bg-orange-500 rounded-3xl p-8 md:p-12 mb-20 text-white flex flex-col md:flex-row gap-12 items-center">
+      <div class="flex-1">
+        <h3 class="text-3xl font-black mb-4 uppercase tracking-tight italic">Ecosistema Gravocom</h3>
+        <p class="text-orange-50 font-medium text-lg leading-relaxed">
+           Nuestros accesorios están pre-configurados para trabajar en armonía con los sistemas láser de la **Serie MZF**, asegurando que cada código grabado sea 100% legible y válido para tus procesos de calidad.
+        </p>
+      </div>
+      <div class="flex gap-4">
+         <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
+            <span class="block text-3xl mb-2">🛡️</span>
+            <span class="text-xs font-black uppercase tracking-widest">Resistencia Industrial</span>
+         </div>
+         <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
+            <span class="block text-3xl mb-2">⚡</span>
+            <span class="text-xs font-black uppercase tracking-widest">Lectura Veloz</span>
+         </div>
+      </div>
+    </section>
+
+    <ContactBanner />
+  </main>
+</Layout>

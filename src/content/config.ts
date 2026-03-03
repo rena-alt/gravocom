@@ -1,24 +1,14 @@
 import { defineCollection, z } from 'astro:content';
 
 const productos = defineCollection({
-  type: 'data', // 'data' para archivos JSON o YAML
+  type: 'content',
   schema: z.object({
-    titulo: z.string(),
-    precio: z.number(),
-    categoria: z.string(),
-    imagen: z.string(),
-    descripcion: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+    category: z.string(),
+    image: z.string().optional(),
+    specs: z.array(z.array(z.string())),
   }),
 });
 
-const gratuitos = defineCollection({
-    type: 'data',
-    schema: z.object({
-      titulo: z.string(),
-      descripcion: z.string(),
-      imagen: z.string(),
-      archivoUrl: z.string(), // Ruta al PDF
-    }),
-  });
-  
-  export const collections = { productos, gratuitos };
+export const collections = { productos }; // Asegúrate de que diga 'productos'

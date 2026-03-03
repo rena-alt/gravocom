@@ -1,92 +1,46 @@
 ---
 // src/components/Hero.astro
 ---
-<section class="hero">
-  <div class="overlay"></div>
-  <div class="content">
-    <span class="badge">Expertos en Marcado y Asesoría</span>
-    <h1>Precisión Láser para la <br><span>Industria</span></h1>
-    <p>
-      Fabricantes de equipos de marcado y limpieza láser. Especialistas en trazabilidad, 
-      códigos 1D/2D y seguridad industrial.
-    </p>
-    
-    <div class="actions">
-      <a href="/productos" class="btn-main">Ver Equipos</a>
-      <a href="/contacto" class="btn-sec">Solicitar Asesoría</a>
+<section class="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-950">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent z-10"></div>
+    <img 
+      src="/assets/industrial-craft.jpg" 
+      alt="Industrial Laser Craft" 
+      class="w-full h-full object-cover opacity-40"
+    />
+  </div>
+
+  <div class="container mx-auto px-6 relative z-20">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 px-4 py-2 rounded-full mb-8">
+        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+        <span class="text-orange-500 text-xs font-black uppercase tracking-[0.2em]">Expertos en Marcado y Asesoría</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-black text-white leading-[0.9] uppercase tracking-tighter mb-8">
+        Precisión Láser <br />
+        <span class="text-orange-500 italic">Industrial</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-xl leading-relaxed border-l-4 border-orange-500 pl-6">
+        Fabricantes de equipos de marcado y limpieza láser. Especialistas en <span class="text-white font-bold">trazabilidad</span>, 
+        códigos 1D/2D y seguridad industrial para plantas de alta exigencia.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/productos" class="group bg-orange-500 hover:bg-orange-600 text-white font-black px-8 py-4 rounded-lg uppercase tracking-widest text-sm transition-all shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2">
+          Ver Equipos
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+        
+        <a href="/contacto" class="bg-transparent border-2 border-slate-700 hover:border-orange-500 text-white font-black px-8 py-4 rounded-lg uppercase tracking-widest text-sm transition-all flex items-center justify-center hover:bg-orange-500/5">
+          Solicitar Asesoría
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
-
-<style>
-  .hero {
-    position: relative;
-    min-height: 100vh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px 20px; 
-    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)), 
-                url('/assets/industrial-craft.jpg') no-repeat center center/cover;
-    color: white;
-    box-sizing: border-box;
-  }
-
-  .content {
-    width: 100%;
-    max-width: 800px;
-    z-index: 2;
-    text-align: center; 
-  }
-
-  h1 {
-    font-size: 2.2rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-
-  p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    padding: 0 10px;
-  }
-
-  .actions {
-    display: flex;
-    flex-direction: column; 
-    gap: 12px;
-    width: 100%;
-    max-width: 325px;
-    margin: 0 auto;
-  }
-
-  .btn-main, .btn-sec {
-    display: block;
-    padding: 14px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    text-align: center;
-    transition: 0.3s;
-  }
-
-  .btn-main { background: #ff6b00; color: white; border: none; }
-  .btn-sec { border: 2px solid #ff6b00; color: #ff6b00; }
-
-  @media (min-width: 768px) {
-    .hero {
-      text-align: left;
-      justify-content: flex-start;
-      padding: 0 10%;
-    }
-    .content { text-align: left; }
-    h1 { font-size: 3.5rem; }
-    .actions {
-      flex-direction: row;
-      max-width: none;
-      margin: 0;
-    }
-    .btn-main, .btn-sec { width: auto; }
-  }
-</style>
