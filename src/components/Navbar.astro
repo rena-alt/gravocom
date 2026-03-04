@@ -1,139 +1,87 @@
 ---
 // src/components/Navbar.astro
+const phone = "525523007699"; 
+const message = encodeURIComponent("Hola, me interesa recibir información y una cotización sobre los equipos de Gravocom.");
+const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+
+const navItems = [
+  { name: "Maquinaria", href: "/productos" },
+  { name: "Software", href: "/software" },
+  { name: "Soporte", href: "/soporte" },
+  { name: "Seguridad", href: "/seguridad-practicas", alert: true },
+];
 ---
-<nav class="navbar">
-  <div class="logo">
-    <a href="/">
-      <img src="/assets/gravocom-logo-white.svg" alt="Gravocom Logo" />
-    </a>
+
+<nav class="sticky top-0 z-[1000] bg-slate-950 border-b border-white/5 h-[80px] flex items-center shadow-2xl">
+  <div class="container mx-auto px-6 flex justify-between items-center">
+    
+    <div class="shrink-0">
+      <a href="/" class="flex items-center group">
+        <img src="/assets/gravocom-logo-white.svg" alt="Gravocom Logo" class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105" />
+      </a>
+    </div>
+
+    <div class="hidden lg:flex items-center gap-10">
+      <ul class="flex items-center gap-8">
+        {navItems.map(item => (
+          <li>
+            <a href={item.href} class="relative text-sm font-black uppercase tracking-widest text-slate-300 hover:text-orange-500 transition-colors flex items-center gap-2 group">
+              {item.name}
+              {item.alert && (
+                <span class="flex h-2 w-2 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                </span>
+              )}
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full"></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <a href={whatsappUrl} target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-3 rounded-lg transition-all shadow-lg shadow-orange-500/20 active:scale-95">
+        Solicitar Cotización
+      </a>
+    </div>
+
+    <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2 group" aria-label="Abrir menú">
+      <span class="w-6 h-0.5 bg-white group-hover:bg-orange-500 transition-all origin-center"></span>
+      <span class="w-6 h-0.5 bg-white group-hover:bg-orange-500 transition-all opacity-100"></span>
+      <span class="w-6 h-0.5 bg-white group-hover:bg-orange-500 transition-all origin-center"></span>
+    </button>
   </div>
 
-  <button class="mobile-menu-btn" aria-label="Abrir menú">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
-  
-  <ul class="nav-links">
-    <li><a href="/maquinaria">Maquinaria</a></li>
-    <li><a href="/software">Software</a></li>
-    <li><a href="/soporte">Soporte Técnico</a></li>
-    <li class="mobile-only">
-      <a href="/cotizar" class="btn-quote-mobile">Solicitar Cotización</a>
-    </li>
-  </ul>
+  <div id="mobile-menu" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md translate-x-full transition-transform duration-500 lg:hidden flex flex-col items-center justify-center z-[1100]">
+    <button id="close-btn" class="absolute top-8 right-8 text-white p-4 uppercase font-black tracking-widest text-xs">Cerrar [X]</button>
+    
+    <ul class="flex flex-col items-center gap-8 mb-12">
+      {navItems.map(item => (
+        <li>
+          <a href={item.href} class="text-2xl font-black text-white uppercase tracking-tighter hover:text-orange-500 transition-colors flex items-center gap-3">
+            {item.name}
+            {item.alert && <span class="h-3 w-3 bg-orange-500 rounded-full"></span>}
+          </a>
+        </li>
+      ))}
+    </ul>
 
-  <div class="cta desktop-only">
-    <a href="/cotizar" class="btn-quote">Solicitar Cotización</a>
+    <a href={whatsappUrl} target="_blank" class="w-[80%] max-w-sm bg-orange-500 text-white text-center font-black uppercase tracking-widest py-5 rounded-2xl shadow-xl shadow-orange-500/20">
+      Cotizar ahora
+    </a>
   </div>
 </nav>
 
 <script>
-  // Lógica para abrir/cerrar menú en móvil
-  const menuBtn = document.querySelector('.mobile-menu-btn');
-  const navLinks = document.querySelector('.nav-links');
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const bars = menuBtn?.querySelectorAll('span');
 
-  menuBtn?.addEventListener('click', () => {
-    navLinks?.classList.toggle('open');
-    menuBtn?.classList.toggle('active');
-  });
+  const toggleMenu = () => {
+    mobileMenu?.classList.toggle('translate-x-full');
+    document.body.classList.toggle('overflow-hidden');
+  };
+
+  menuBtn?.addEventListener('click', toggleMenu);
+  closeBtn?.addEventListener('click', toggleMenu);
 </script>
-
-<style>
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 5%;
-    background: #0f172a;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 70px;
-  }
-
-  .logo img { height: 55px; width: auto; }
-
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: #f1f5f9;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: 0.3s;
-  }
-
-  .nav-links a:hover { color: #ff6b00; }
-
-  .btn-quote {
-    background: #ff6b00;
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: 0.3s;
-  }
-
-  .mobile-menu-btn {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .bar {
-    width: 25px;
-    height: 2px;
-    background-color: white;
-    transition: 0.4s;
-  }
-
-  .mobile-only { display: none; }
-
-  @media (max-width: 768px) {
-    .mobile-menu-btn { display: flex; z-index: 1100; }
-    .desktop-only { display: none; }
-    .mobile-only { display: block; width: 100%; }
-
-    .nav-links {
-      position: fixed;
-      top: 0;
-      right: -100%; 
-      width: 80%;
-      height: 100vh;
-      background: #1e293b;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: 0.5s ease;
-      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-    }
-
-    .nav-links.open { right: 0; }
-
-    .nav-links a { font-size: 1.2rem; }
-
-    .btn-quote-mobile {
-      background: #ff6b00;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 4px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1rem;
-    }
-
-    .mobile-menu-btn.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 5px); }
-    .mobile-menu-btn.active .bar:nth-child(2) { opacity: 0; }
-    .mobile-menu-btn.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -5px); }
-  }
-</style>

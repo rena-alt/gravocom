@@ -1,126 +1,110 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SafetyNotice from '../components/SafetyNotice.astro';
+import ContactBanner from '../components/ContactBanner.astro';
 ---
 
 <Layout title="Seguridad y Mejores Prácticas | Gravocom">
   <main>
-    <section class="safety-hero">
-      <div class="container">
-        <h1>Compromiso con la <span>Seguridad Láser</span></h1>
-        <p>Nuestros equipos de Fibra Óptica (Serie MZF) operan con tecnología Clase 4. Conocer y aplicar los protocolos de seguridad es vital para una producción eficiente y segura.</p>
+    <section class="relative bg-slate-950 pt-24 pb-20 overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-600 via-orange-400 to-orange-600"></div>
+      
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-full mb-8">
+          <span class="w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+          <span class="text-red-500 text-[10px] font-black uppercase tracking-[0.3em]">Protocolo Clase 4</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-none">
+          Seguridad <span class="text-orange-500 italic">Láser</span>
+        </h1>
+        <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          Nuestros equipos de Fibra Óptica operan con tecnología de alta potencia. El cumplimiento de protocolos es vital para garantizar una producción <span class="text-white font-bold">eficiente y libre de riesgos.</span>
+        </p>
       </div>
     </section>
 
-    <SafetyNotice />
+    <div class="bg-white py-12">
+      <div class="container mx-auto px-6">
+        <SafetyNotice />
+      </div>
+    </div>
 
-    <section class="technical-standards">
-      <div class="container">
-        <div class="grid">
-          <div class="text-content">
-            <h2>Estándares de <span>Protección</span></h2>
-            <p>
-              El marcado láser de metales y resinas genera reflexiones difusas y humos metálicos que requieren atención especializada. En Gravocom seguimos las recomendaciones internacionales para el manejo de fuentes <strong>Raycus y MaxPhotonics</strong>.
+    <section class="py-24 bg-slate-50">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          
+          <div class="order-2 md:order-1">
+            <div class="flex items-center gap-4 mb-6">
+              <span class="h-1 w-12 bg-orange-500"></span>
+              <h2 class="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tight">
+                Estándares de <span class="text-orange-500">Protección</span>
+              </h2>
+            </div>
+            
+            <p class="text-slate-600 mb-8 leading-relaxed">
+              El marcado de metales genera reflexiones difusas y humos metálicos que requieren atención especializada. En Gravocom seguimos normativas internacionales para el manejo seguro de fuentes **Raycus y MaxPhotonics**.
             </p>
-            <div class="checklist">
-              <div class="check-item">
-                <strong>Longitud de Onda:</strong> Operación en 1064nm, invisible al ojo humano pero altamente energética.
+
+            <div class="space-y-4">
+              <div class="group p-6 bg-white border-l-4 border-orange-500 shadow-sm hover:shadow-md transition-all">
+                <h4 class="text-slate-900 font-black uppercase text-sm mb-2">Longitud de Onda: 1064nm</h4>
+                <p class="text-slate-500 text-sm italic">Operación invisible al ojo humano pero altamente energética. El uso de protección ocular específica es mandatorio.</p>
               </div>
-              <div class="check-item">
-                <strong>EPP Obligatorio:</strong> Uso de cascos, fajas y botas de seguridad en el área de trabajo según el Flyer oficial.
+
+              <div class="group p-6 bg-white border-l-4 border-slate-900 shadow-sm hover:shadow-md transition-all">
+                <h4 class="text-slate-900 font-black uppercase text-sm mb-2">EPP Obligatorio</h4>
+                <p class="text-slate-500 text-sm italic">Uso de caretas especiales, extracción de humos y calzado dieléctrico según el protocolo de seguridad industrial.</p>
               </div>
-              <div class="check-item">
-                <strong>Señalética:</strong> Instalación de avisos de advertencia en las estaciones de columna e integración.
+
+              <div class="group p-6 bg-white border-l-4 border-orange-500 shadow-sm hover:shadow-md transition-all">
+                <h4 class="text-slate-900 font-black uppercase text-sm mb-2">Señalética de Área</h4>
+                <p class="text-slate-500 text-sm italic">Instalación obligatoria de perímetros de advertencia en estaciones de columna e integraciones en línea.</p>
               </div>
             </div>
           </div>
-          <div class="image-placeholder">
-            <div class="safety-badge">LÁSER CLASE 4</div>
+
+          <div class="order-1 md:order-2 flex justify-center">
+            <div class="relative group">
+              <div class="absolute -inset-4 bg-orange-500/20 rounded-3xl blur-2xl group-hover:bg-orange-500/30 transition-all"></div>
+              <div class="relative bg-slate-900 border-2 border-orange-500 p-12 md:p-20 rounded-2xl text-center transform hover:rotate-2 transition-transform shadow-2xl">
+                <div class="mb-4 inline-block p-4 bg-orange-500 rounded-full text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.268 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <h3 class="text-white font-black text-4xl md:text-5xl uppercase tracking-widest leading-none mb-4">LÁSER<br/><span class="text-orange-500">CLASE 4</span></h3>
+                <p class="text-orange-500/60 font-bold text-xs uppercase tracking-[0.4em]">Extreme Caution Required</p>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <section class="training-cta">
-      <div class="container">
-        <div class="card-cta">
-          <h3>¿Necesitas capacitación para tu personal?</h3>
-          <p>Brindamos asesoría en mejores prácticas de grabado para asegurar que tu equipo de trabajo esté protegido mientras maximiza la trazabilidad.</p>
-          <a href="https://wa.me/525523007699" class="btn-orange">Solicitar Capacitación</a>
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="bg-slate-900 rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden text-center border-2 border-slate-800">
+           <div class="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] opacity-5"></div>
+           
+           <h3 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-6 relative z-10">
+            ¿Necesitas capacitación para tu <span class="text-orange-500">personal?</span>
+           </h3>
+           <p class="text-slate-400 max-w-2xl mx-auto mb-10 text-lg relative z-10">
+            Brindamos asesoría en sitio sobre mejores prácticas de grabado para asegurar que tu equipo de trabajo esté protegido mientras maximiza la productividad.
+           </p>
+           
+           <a href="https://wa.me/525523007699" target="_blank" class="inline-flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white font-black px-10 py-5 rounded-xl uppercase tracking-widest transition-all shadow-lg shadow-orange-500/20 relative z-10">
+             Solicitar Capacitación Técnica
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+               <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+             </svg>
+           </a>
         </div>
       </div>
     </section>
+
+    <ContactBanner />
   </main>
 </Layout>
-
-<style>
-  .safety-hero {
-    background: #0f172a;
-    padding: 6rem 5% 4rem;
-    text-align: center;
-    color: white;
-  }
-  .safety-hero h1 { font-size: 3rem; margin-bottom: 1.5rem; }
-  .safety-hero h1 span { color: #ff6b00; }
-  .safety-hero p { max-width: 800px; margin: 0 auto; color: #94a3b8; font-size: 1.2rem; }
-
-  .technical-standards { padding: 5rem 5%; background: white; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  
-  .grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 4rem; 
-    align-items: center; 
-  }
-
-  .text-content h2 { font-size: 2.2rem; margin-bottom: 1.5rem; color: #0f172a; }
-  .text-content h2 span { color: #ff6b00; }
-  .text-content p { color: #475569; line-height: 1.7; margin-bottom: 2rem; }
-
-  .checklist { display: flex; flex-direction: column; gap: 1rem; }
-  .check-item { 
-    padding: 1rem; 
-    background: #f8fafc; 
-    border-left: 4px solid #ff6b00;
-    font-size: 0.95rem;
-  }
-
-  .safety-badge {
-    background: #ff6b00;
-    color: white;
-    padding: 2rem;
-    font-weight: 800;
-    font-size: 2rem;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(255,107,0,0.2);
-  }
-
-  .training-cta { padding: 4rem 5%; }
-  .card-cta { 
-    background: #1e293b; 
-    padding: 3rem; 
-    border-radius: 15px; 
-    text-align: center; 
-    color: white; 
-  }
-  .card-cta h3 { font-size: 1.8rem; margin-bottom: 1rem; }
-  .card-cta p { color: #cbd5e1; margin-bottom: 2rem; }
-
-  .btn-orange {
-    background: #ff6b00;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    display: inline-block;
-  }
-
-  @media (max-width: 768px) {
-    .grid { grid-template-columns: 1fr; gap: 2rem; }
-    .safety-hero h1 { font-size: 2.2rem; }
-  }
-</style>

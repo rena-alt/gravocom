@@ -1,124 +1,83 @@
 ---
+// src/components/Footer.astro
 const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { name: "LinkedIn", url: "https://www.linkedin.com/posts/carlos-ortiz-medina_gravocom-lasermarker-laser-share-7424569695137206272-TqQK", icon: "LN" },
+  { name: "Facebook", url: "https://www.facebook.com/Gravocom-laser-marking-61561505321687/", icon: "FB" },
+  { name: "YouTube", url: "https://www.youtube.com/@GRAVOCOM", icon: "YT" }
+];
 ---
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="/assets/gravocom-logo-white.svg" alt="Gravocom Logo" class="footer-logo" />
-        <p>Expertos en marcado, asesoría y desarrollo de aplicaciones láser para la industria nacional.</p>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/posts/carlos-ortiz-medina_gravocom-lasermarker-laser-share-7424569695137206272-TqQK?utm_source=share&utm_medium=member_desktop&rcm=ACoAACJNQDgB4tMkMV_5RZpt-J7EkV4-hjUdhfQ" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LN</a>
-          <a href="https://www.facebook.com/Gravocom-laser-marking-61561505321687/" aria-label="YouTube" target="_blank" rel="noopener noreferrer">FB</a>
-          <a href="https://www.youtube.com/@GRAVOCOM" aria-label="YouTube" target="_blank" rel="noopener noreferrer">YT</a>
+<footer class="bg-slate-950 text-slate-400 pt-20 pb-10 border-t-4 border-orange-500 relative overflow-hidden">
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/5 blur-[100px] rounded-full -mb-48 -mr-48"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      
+      <div class="lg:col-span-1">
+        <img src="/assets/gravocom-logo-white.svg" alt="Gravocom Logo" class="h-12 mb-6" />
+        <p class="text-sm leading-relaxed mb-8 italic">
+          Expertos en marcado, asesoría técnica y desarrollo de aplicaciones láser para la industria nacional con estándares globales.
+        </p>
+        <div class="flex gap-4">
+          {socialLinks.map(social => (
+            <a href={social.url} target="_blank" rel="noopener noreferrer" 
+               class="w-10 h-10 flex items-center justify-center bg-slate-900 border border-slate-800 rounded-lg text-xs font-black text-white hover:border-orange-500 hover:text-orange-500 transition-all">
+              {social.icon}
+            </a>
+          ))}
         </div>
       </div>
 
-      <div class="footer-nav">
-        <h4>Soluciones</h4>
-        <ul>
-          <li><a href="/maquinaria">Marcado Fibra Óptica</a></li>
-          <li><a href="/maquinaria">Limpieza Láser</a></li>
-          <li><a href="/software">Software de Trazabilidad</a></li>
+      <div>
+        <h4 class="text-white font-black uppercase tracking-[0.2em] text-xs mb-6 border-b border-orange-500/30 pb-2 inline-block">Soluciones</h4>
+        <ul class="space-y-4 text-sm">
+          <li><a href="/productos/marcado-laser" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Sistemas de Marcado Fibra</a></li>
+          <li><a href="/productos/accesorios-trazabilidad" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Accesorios de Trazabilidad</a></li>
+          <li><a href="/software" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Software de Control</a></li>
+          <li><a href="/seguridad-practicas" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Seguridad Industrial</a></li>
         </ul>
       </div>
 
-      <div class="footer-contact">
-        <h4>Contacto Directo</h4>
-        <p><strong>Ventas:</strong> 5523007699</p>
-        <p><strong>Email:</strong> cortiz@gravocom.com.mx</p>
-        <p><strong>Ubicación:</strong> C. Centlapatl 178, San Martin Xochinahuac, Azcapotzalco, 02120 Ciudad de México, CDMX</p>
+      <div>
+        <h4 class="text-white font-black uppercase tracking-[0.2em] text-xs mb-6 border-b border-orange-500/30 pb-2 inline-block">Ventas & Soporte</h4>
+        <ul class="space-y-4 text-sm">
+          <li class="flex flex-col">
+            <span class="text-[10px] font-bold text-orange-500 uppercase">Línea Directa:</span>
+            <a href="tel:5523007699" class="text-slate-200 font-mono text-lg hover:text-orange-500 transition-colors">55 2300 7699</a>
+          </li>
+          <li class="flex flex-col">
+            <span class="text-[10px] font-bold text-orange-500 uppercase">Email Corporativo:</span>
+            <a href="mailto:cortiz@gravocom.com.mx" class="text-slate-200 hover:text-orange-500 transition-colors">cortiz@gravocom.com.mx</a>
+          </li>
+        </ul>
       </div>
+
+      <div>
+        <h4 class="text-white font-black uppercase tracking-[0.2em] text-xs mb-6 border-b border-orange-500/30 pb-2 inline-block">Ubicación</h4>
+        <p class="text-xs leading-loose">
+          C. Centlapatl 178, San Martin Xochinahuac,<br/>
+          Azcapotzalco, 02120<br/>
+          Ciudad de México, CDMX
+        </p>
+        <a href="https://maps.google.com" target="_blank" class="mt-4 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-orange-500 hover:text-white transition-colors">
+          Abrir en Maps →
+        </a>
+      </div>
+
     </div>
 
-    <div class="footer-bottom">
-      <p>&copy; {currentYear} Gravocom Laser Technology. Todos los derechos reservados.</p>
-      <div class="legal">
-        <a href="/privacidad">Aviso de Privacidad</a>
-        <span>|</span>
-        <a href="/seguridad">Seguridad Láser</a>
+    <div class="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-[10px] font-bold uppercase tracking-widest">
+        © {currentYear} Gravocom Laser Technology. <span class="text-slate-700">|</span> 
+        <span class="text-orange-500/50 italic"> Engineering for Precision.</span>
+      </p>
+      
+      <div class="flex gap-6 text-[10px] font-black uppercase tracking-widest">
+        <a href="/privacidad" class="hover:text-white transition-colors">Privacidad</a>
+        <a href="/seguridad-practicas" class="hover:text-white transition-colors">Seguridad</a>
       </div>
     </div>
   </div>
 </footer>
-
-<style>
-  .footer {
-    background-color: #0f172a;
-    color: #94a3b8;
-    padding: 4rem 5% 2rem;
-    border-top: 4px solid #ff6b00; 
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 4rem;
-    margin-bottom: 3rem;
-  }
-
-  .footer-logo {
-    height: 40px;
-    margin-bottom: 1.5rem;
-    filter: brightness(0) invert(1);
-  }
-
-  .footer-brand p {
-    line-height: 1.6;
-    font-size: 0.95rem;
-  }
-
-  h4 {
-    color: white;
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  ul { list-style: none; padding: 0; }
-  ul li { margin-bottom: 0.8rem; }
-  
-  ul a {
-    color: #94a3b8;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-
-  ul a:hover {
-    color: #ff6b00;
-    padding-left: 5px;
-  }
-
-  .footer-contact p {
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-  }
-
-  .footer-contact strong { color: white; }
-
-  .footer-bottom {
-    border-top: 1px solid #1e293b;
-    padding-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-  }
-
-  .legal { display: flex; gap: 1rem; }
-  .legal a { color: #64748b; text-decoration: none; }
-  .legal a:hover { color: white; }
-
-  @media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
-    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-    .footer-logo { margin: 0 auto 1.5rem; }
-  }
-</style>

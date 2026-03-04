@@ -6,18 +6,18 @@ const products = [
     series: "Serie MZF 30N / 50N / 100N",
     source: "Raycus / MaxPhotonics",
     features: ["Marcado profundo", "Integración en línea", "Enfriamiento por aire"],
-    image: "/assets/fibra-laser.jpg", 
+    image: "/assets/MZF30C.jpg", 
     url: "marcado-laser",
-    primary: true
+    primary: false
   },
   {
-    title: "Lector de Código de Barras",
-    series: "Inalámbrico 1D/2D",
-    source: "Protección IP54",
-    features: ["QR y Datamatrix", "Resistente a golpes", "Bluetooth / WiFi"],
-    image: "/assets/lector.jpg",
+    title: "Marcadora Láser Fibra Óptica",
+    series: "Fpb20e fibra20w",
+    source: "",
+    features: ["Ultra portatil","Doble funcionalidad (marcado en escritorio y marcado en mano) ", "Área de grabado de 100x100mm"],
+    image: "/assets/Fpb20e-fibra20w.png",
     url: "trazabilidad",
-    primary: false
+    primary: true
   }
 ];
 
@@ -46,13 +46,13 @@ const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
       {products.map(p => (
         <div class={`group relative bg-white border-2 transition-all duration-500 rounded-3xl overflow-hidden flex flex-col ${p.primary ? 'border-orange-500 shadow-2xl shadow-orange-500/10 scale-105 z-10' : 'border-slate-200 hover:border-slate-900 shadow-xl'}`}>
           
-          <div class="relative h-64 bg-slate-200 overflow-hidden">
+          <div class="relative h-full bg-slate-200 overflow-hidden">
             <img src={p.image} alt={p.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
             
             {p.primary && (
               <span class="absolute top-4 right-4 bg-orange-500 text-white text-[10px] font-black px-3 py-1 rounded-lg uppercase tracking-widest animate-bounce">
-                Más Vendido
+                Lanzamiento
               </span>
             )}
             

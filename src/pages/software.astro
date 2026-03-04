@@ -1,88 +1,101 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactBanner from '../components/ContactBanner.astro';
 ---
 
-<Layout title="Software e Integración">
-  <section class="software-hero">
-    <div class="container">
-      <h1>Software de <span>Control y Diseño</span></h1>
-      <p>Interfaces intuitivas y potentes para el marcado de precisión y la trazabilidad industrial.</p>
+<Layout title="Software e Integración | Gravocom">
+  <section class="relative bg-slate-950 py-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#F97316 0.5px, transparent 0.5px); background-size: 30px 30px;"></div>
+    
+    <div class="container mx-auto px-6 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 px-4 py-2 rounded-full mb-6">
+        <span class="text-orange-500 text-[10px] font-black uppercase tracking-[0.3em]">Smart Integration</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-6">
+        Software de <span class="text-orange-500 italic">Control y Diseño</span>
+      </h1>
+      <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Interfaces potentes diseñadas para el marcado de precisión, automatización de trazabilidad y compatibilidad total con flujos de trabajo industriales.
+      </p>
     </div>
   </section>
 
-  <section class="software-details">
-    <div class="container grid">
-      <div class="feature-card">
-        <h3>Trazabilidad Avanzada</h3>
-        <p>Generación automática de códigos 1D y 2D (QR, Datamatrix) vinculados a sus procesos de producción.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Compatibilidad Total</h3>
-        <p>Importación de archivos vectoriales (AI, DXF, PLT) y formatos de imagen para grabados complejos.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Asesoría en Programas</h3>
-        <p>Desarrollamos aplicaciones a medida para optimizar sus tiempos de grabado y asegurar la calidad.</p>
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="group p-8 bg-slate-50 border border-slate-200 rounded-2xl hover:border-orange-500 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl">
+          <div class="w-12 h-12 bg-slate-900 text-orange-500 flex items-center justify-center rounded-lg mb-6 group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight mb-4">Trazabilidad Avanzada</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Generación automática de códigos **1D y 2D (QR, Data Matrix)** vinculados dinámicamente a sus bases de datos y procesos de producción.
+          </p>
+          <div class="mt-6 flex gap-2">
+            <span class="text-[9px] font-bold px-2 py-1 bg-slate-200 rounded text-slate-500 uppercase">Excel/SQL</span>
+            <span class="text-[9px] font-bold px-2 py-1 bg-slate-200 rounded text-slate-500 uppercase">Dynamic QR</span>
+          </div>
+        </div>
+
+        <div class="group p-8 bg-slate-50 border border-slate-200 rounded-2xl hover:border-orange-500 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl">
+          <div class="w-12 h-12 bg-slate-900 text-orange-500 flex items-center justify-center rounded-lg mb-6 group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight mb-4">Compatibilidad Total</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Soporte nativo para archivos vectoriales **AI, DXF, PLT** y formatos de imagen. Importación fluida para grabados técnicos de alta complejidad.
+          </p>
+          <div class="mt-6 flex gap-2">
+            <span class="text-[9px] font-bold px-2 py-1 bg-slate-200 rounded text-slate-500 uppercase">Vector Support</span>
+            <span class="text-[9px] font-bold px-2 py-1 bg-slate-200 rounded text-slate-500 uppercase">CAD/CAM</span>
+          </div>
+        </div>
+
+        <div class="group p-8 bg-slate-50 border border-slate-200 rounded-2xl hover:border-orange-500 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-xl">
+          <div class="w-12 h-12 bg-slate-900 text-orange-500 flex items-center justify-center rounded-lg mb-6 group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight mb-4">Asesoría en Programas</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Desarrollo de scripts y aplicaciones a medida para optimizar tiempos de grabado, automatizar secuencias y asegurar el control de calidad.
+          </p>
+          <div class="mt-6 flex gap-2">
+            <span class="text-[9px] font-bold px-2 py-1 bg-orange-100 rounded text-orange-600 uppercase">Custom Scripts</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="support-cta">
-    <div class="container">
-      <div class="cta-box">
-        <h2>¿Necesitas ayuda con tu configuración?</h2>
-        <p>Brindamos soporte técnico local y capacitación para el uso seguro de nuestros programas.</p>
-        <a href="/contacto" class="btn-orange">Hablar con Soporte</a>
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-6">
+      <div class="relative bg-slate-950 rounded-[2rem] p-10 md:p-16 overflow-hidden border-b-8 border-orange-500 shadow-2xl">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 blur-[100px]"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+          <div class="text-center md:text-left">
+            <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-4">
+              ¿Problemas con tu <span class="text-orange-500">configuración?</span>
+            </h2>
+            <p class="text-slate-400 max-w-md text-lg">
+              Brindamos soporte técnico local y capacitación remota para el uso seguro y eficiente de nuestros programas.
+            </p>
+          </div>
+          <a href="/contacto" class="bg-orange-500 hover:bg-orange-600 text-white font-black px-10 py-5 rounded-xl uppercase tracking-widest transition-all shadow-lg shadow-orange-500/20 whitespace-nowrap">
+            Hablar con Soporte
+          </a>
+        </div>
       </div>
     </div>
   </section>
+
+  <ContactBanner />
 </Layout>
-
-<style>
-  .software-hero {
-    background: #0f172a;
-    padding: 6rem 5%;
-    text-align: center;
-    color: white;
-  }
-  .software-hero h1 { font-size: 3rem; }
-  .software-hero h1 span { color: #ff6b00; }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 4rem 0;
-  }
-
-  .feature-card {
-    padding: 2rem;
-    background: #f8fafc;
-    border-radius: 8px;
-    border-top: 4px solid #ff6b00;
-  }
-
-  .support-cta {
-    padding: 4rem 5%;
-    background: #fff;
-  }
-
-  .cta-box {
-    background: #1e293b;
-    color: white;
-    padding: 3rem;
-    border-radius: 12px;
-    text-align: center;
-  }
-
-  .btn-orange {
-    display: inline-block;
-    background: #ff6b00;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 1.5rem;
-  }
-</style>
