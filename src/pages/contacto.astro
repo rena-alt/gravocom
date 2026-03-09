@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactBanner from '../components/ContactBanner.astro';
+
+// Configuración de Formspree (Sustituye con el ID de Carlos después)
+const formAction = "https://formspree.io/f/tu_id_aqui";
+---
+
+<Layout title="Soporte Técnico y Cotizaciones | Gravocom">
+  <main class="bg-slate-50">
+    
+    <section class="bg-slate-950 py-20 border-b border-orange-500/20">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter mb-4">
+          Asesoría y <span class="text-orange-500 italic">Soporte Técnico</span>
+        </h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+          Estamos listos para optimizar sus procesos de marcado y trazabilidad. Envíenos sus requerimientos y un especialista lo contactará.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+          
+          <div class="space-y-12">
+            <div>
+              <h2 class="text-2xl font-black text-slate-900 uppercase tracking-tight mb-6 flex items-center gap-3">
+                <span class="w-8 h-1 bg-orange-500"></span>
+                Canales Directos
+              </h2>
+              <div class="grid gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                  <p class="text-[10px] font-bold text-orange-500 uppercase tracking-widest mb-1">Ventas y Proyectos</p>
+                  <a href="tel:5523007699" class="text-2xl font-mono font-bold text-slate-900 hover:text-orange-500 transition-colors">
+                    55 2300 7699
+                  </a>
+                  <p class="text-sm text-slate-500 mt-2 italic">Atención de lunes a viernes: 9:00 AM - 6:00 PM</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                  <p class="text-[10px] font-bold text-orange-500 uppercase tracking-widest mb-1">Correo Electrónico</p>
+                  <a href="mailto:cortiz@gravocom.com.mx" class="text-lg font-bold text-slate-900 hover:text-orange-500 transition-colors">
+                    cortiz@gravocom.com.mx
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-slate-900 p-8 rounded-[2rem] text-white relative overflow-hidden">
+              <div class="absolute top-0 right-0 p-4 opacity-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a2 2 0 00-1.96 1.414l-.727 2.903a2 2 0 01-1.503 1.503l-2.903.727a2 2 0 00-1.414 1.96l.477 2.387a2 2 0 00.547 1.022l11.011-11.011z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-black uppercase mb-4 italic text-orange-500">¿Nuevo Lanzamiento?</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Pregunte por nuestra **Fibra Ultra Portátil 2-en-1**. Precio especial en preventa limitada.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-100">
+            <form action={formAction} method="POST" class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="name" class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Nombre Completo</label>
+                  <input type="text" name="name" id="name" required class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-500 focus:bg-white outline-none transition-all" placeholder="Ej. Ing. Juan Pérez" />
+                </div>
+                <div class="space-y-2">
+                  <label for="company" class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Empresa</label>
+                  <input type="text" name="company" id="company" class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-500 focus:bg-white outline-none transition-all" placeholder="Nombre de su industria" />
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="email" class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Correo Corporativo</label>
+                  <input type="email" name="email" id="email" required class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-500 focus:bg-white outline-none transition-all" placeholder="juan@empresa.com" />
+                </div>
+                <div class="space-y-2">
+                  <label for="phone" class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Teléfono</label>
+                  <input type="tel" name="phone" id="phone" required class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-500 focus:bg-white outline-none transition-all" placeholder="10 dígitos" />
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label for="interest" class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Interés Principal</label>
+                <select name="interest" id="interest" class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-500 focus:bg-white outline-none transition-all text-sm font-medium">
+                  <option value="marcado-laser">Sistemas de Marcado Láser (MZF)</option>
+                  <option value="fibra-portatil">Fibra Ultra Portátil (Lanzamiento)</option>
+                  <option value="trazabilidad">Lectores y Trazabilidad</option>
+                  <option value="software">Software y Automatización</option>
+                  <option value="soporte">Soporte Técnico / Mantenimiento</option>
+                </select>
+              </div>
+
+              <div class="space-y-2">
+                <label for="message" class="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Detalles del Requerimiento</label>
+                <textarea name="message" id="message" rows="4" required class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 focus:border-orange-500 focus:bg-white outline-none transition-all" placeholder="Describa el material a marcar o el tipo de soporte que requiere..."></textarea>
+              </div>
+
+              <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-black uppercase tracking-[0.2em] py-5 rounded-2xl transition-all shadow-xl shadow-orange-500/20 active:scale-95">
+                Enviar Solicitud Técnica
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <ContactBanner />
+  </main>
+</Layout>
