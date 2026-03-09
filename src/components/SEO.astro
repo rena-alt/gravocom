@@ -1,0 +1,19 @@
+---
+// src/components/SEO.astro
+const { 
+  title, 
+  description, 
+  image = "/assets/og-image.jpg" 
+} = Astro.props;
+
+const canonicalURL = Astro.site 
+  ? new URL(Astro.url.pathname, Astro.site) 
+  : new URL(Astro.url.pathname, 'http://localhost:4321');
+
+const ogImageURL = Astro.site 
+  ? new URL(image, Astro.site) 
+  : image; 
+---
+
+<link rel="canonical" href={canonicalURL} />
+<meta property="og:image" content={ogImageURL} />

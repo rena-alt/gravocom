@@ -15,9 +15,13 @@ export async function getStaticPaths() {
 
 const { producto } = Astro.props;
 const { Content } = await producto.render();
+const { entry } = Astro.props;
 ---
 
-<Layout title={producto.data.title}>
+<Layout 
+  title={`${producto.data.title} | Gravocom`} 
+  description={producto.data.description}
+>  
   <main class="max-w-4xl mx-auto p-6">
     <nav class="mb-8 text-sm text-slate-500">
       <a href="/productos" class="hover:text-blue-600">Catálogo</a> 
