@@ -4,6 +4,6 @@ import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  // En lugar de importarlo arriba, lo llamamos directamente aquí
+  site: 'https://www.gravocom.com.mx',
   integrations: [(await import('@astrojs/tailwind')).default(), icon()],
 });
