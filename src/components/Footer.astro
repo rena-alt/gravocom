@@ -1,11 +1,13 @@
 ---
 // src/components/Footer.astro
+import { Icon } from 'astro-icon/components';
 const currentYear = new Date().getFullYear();
 
+
 const socialLinks = [
-  { name: "LinkedIn", url: "https://www.linkedin.com/posts/carlos-ortiz-medina_gravocom-lasermarker-laser-share-7424569695137206272-TqQK", icon: "LN" },
-  { name: "Facebook", url: "https://www.facebook.com/Gravocom-laser-marking-61561505321687/", icon: "FB" },
-  { name: "YouTube", url: "https://www.youtube.com/@GRAVOCOM", icon: "YT" }
+  { name: "LinkedIn", url: "https://www.linkedin.com/posts/carlos-ortiz-medina_gravocom-lasermarker-laser-share-7424569695137206272-TqQK", icon: "mdi:linkedin" },
+  { name: "Facebook", url: "https://www.facebook.com/Gravocom-laser-marking-61561505321687/", icon: "mdi:facebook" },
+  { name: "YouTube", url: "https://www.youtube.com/@GRAVOCOM", icon: "mdi:youtube" }
 ];
 ---
 
@@ -23,8 +25,8 @@ const socialLinks = [
         <div class="flex gap-4">
           {socialLinks.map(social => (
             <a href={social.url} target="_blank" rel="noopener noreferrer" 
-               class="w-10 h-10 flex items-center justify-center bg-slate-900 border border-slate-800 rounded-lg text-xs font-black text-white hover:border-orange-500 hover:text-orange-500 transition-all">
-              {social.icon}
+               class="w-10 h-10 flex items-center justify-center bg-slate-900 border border-slate-800 rounded-lg text-base font-black text-white hover:border-orange-500 hover:text-orange-500 transition-all">
+               <Icon name={social.icon} class="social-icon" />
             </a>
           ))}
         </div>
@@ -36,7 +38,7 @@ const socialLinks = [
           <li><a href="/productos/marcado-laser" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Sistemas de Marcado Fibra</a></li>
           <li><a href="/productos/trazabilidad" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Accesorios de Trazabilidad</a></li>
           <li><a href="/software" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Software de Control</a></li>
-          <li><a href="/seguridad-practicas" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Seguridad Industrial</a></li>
+          <li><a href="/seguridad" class="hover:text-orange-500 hover:translate-x-1 inline-block transition-all">Seguridad Industrial</a></li>
         </ul>
       </div>
 

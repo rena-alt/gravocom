@@ -12,9 +12,8 @@ User-agent: *
 Disallow: /
 `.trim();
 
-export const GET: APIRoute = ({ site }) => {
-  // Verificamos si estamos en producción real
-  const isProd = process.env.PUBLIC_ENV === 'development';
+export const GET: APIRoute = () => {
+  const isProd = import.meta.env.PUBLIC_ENV === 'production';
   
   return new Response(isProd ? robotsPublic : robotsPrivate, {
     headers: { 'Content-Type': 'text/plain' },
