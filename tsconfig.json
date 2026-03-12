@@ -1,9 +1,19 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "bundler",
-    "types": ["astro/client", "@netlify/edge-functions"]
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "types": ["astro/client", "@netlify/edge-functions"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true
   },
-  "include": [".astro/types.d.ts", "**/*"],
+  "include": [
+    ".astro/types.d.ts", 
+    "**/*", 
+    "netlify/edge-functions/**/*.ts" 
+  ],
   "exclude": ["dist"]
 }
