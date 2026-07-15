@@ -2,10 +2,8 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import ContactBanner from '../../components/ContactBanner.astro';
-// 1. Importamos el componente de optimización nativo
 import { Image } from 'astro:assets';
 
-// Filtramos solo los productos que pertenecen a esta categoría
 const productosLaser = await getCollection('productos', ({ data }) => {
   return data.category === 'Marcado Láser';
 });
@@ -27,15 +25,18 @@ const productosLaser = await getCollection('productos', ({ data }) => {
         Sistemas de <span class="text-orange-500">Marcado Láser</span>
       </h1>
       <p class="text-xl text-slate-600 max-w-3xl leading-relaxed">
-        Tecnología de fibra óptica de alta precisión diseñada para integración en líneas de producción, grabado profundo y trazabilidad permanente en metales y plásticos industriales[cite: 1].
+        Tecnología de fibra óptica de alta precisión diseñada para integración en líneas de producción, grabado profundo y trazabilidad permanente en metales y plásticos industriales.
       </p>
     </header>
 
     <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
       {productosLaser.map(producto => (
-        <article class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300 flex flex-col">
+  
+        <a 
+          href={`/productos/${producto.slug}`} 
+          class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300 flex flex-col cursor-pointer"
+        >
           
-          {/* 2. Reemplazamos el contenedor gris por la imagen real optimizada */}
           <div class="aspect-square bg-slate-50 flex items-center justify-center relative overflow-hidden p-6 border-b border-slate-100">
             <div class="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/5 transition-colors z-10 pointer-events-none"></div>
             
@@ -67,16 +68,17 @@ const productosLaser = await getCollection('productos', ({ data }) => {
             </p>
 
             <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
-              <a href={`/productos/${producto.slug}`} class="bg-slate-900 text-white text-xs font-bold px-6 py-3 rounded-lg hover:bg-orange-500 transition-colors uppercase tracking-widest shadow-lg shadow-slate-200">
+        
+              <span class="bg-slate-900 text-white text-xs font-bold px-6 py-3 rounded-lg group-hover:bg-orange-500 transition-colors uppercase tracking-widest shadow-lg shadow-slate-200">
                 Ficha Técnica
-              </a>
+              </span>
               
               <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
                 ID: {producto.slug.split('-').pop()}
               </span>
             </div>
           </div>
-        </article>
+        </a>
       ))}
     </section>
 
@@ -85,10 +87,10 @@ const productosLaser = await getCollection('productos', ({ data }) => {
         <h3 class="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight">¿Por qué elegir nuestra Serie MZF?</h3>
         <ul class="space-y-4">
           {[
-            "Fuentes Raycus / MaxPhotonics de larga vida útil (100k hrs)[cite: 1].",
-            "Sistemas de enfriamiento por aire altamente eficientes[cite: 1].",
-            "Fácil integración en software de trazabilidad industrial[cite: 1].",
-            "Soporte técnico especializado en México[cite: 1]."
+            "Fuentes Raycus / MaxPhotonics de larga vida útil (100k hrs).",
+            "Sistemas de enfriamiento por aire altamente eficientes.",
+            "Fácil integración en software de trazabilidad industrial.",
+            "Soporte técnico especializado en México."
           ].map(item => (
             <li class="flex items-start gap-3 text-slate-700">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

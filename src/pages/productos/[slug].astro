@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import EquipmentTable from '../../components/EquipmentTable.astro';
 import ContactBanner from '../../components/ContactBanner.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const productos = await getCollection('productos');
@@ -15,38 +16,76 @@ export async function getStaticPaths() {
 
 const { producto } = Astro.props;
 const { Content } = await producto.render();
-const { entry } = Astro.props;
+
 ---
 
 <Layout 
   title={`${producto.data.title} | Gravocom`} 
   description={producto.data.description}
 >  
-  <main class="max-w-4xl mx-auto p-6">
-    <nav class="mb-8 text-sm text-slate-500">
-      <a href="/productos" class="hover:text-blue-600">Catálogo</a> 
-      <span>/</span> 
+  <main class="max-w-5xl mx-auto p-6">
+    <nav class="mb-8 text-sm text-slate-500 uppercase font-bold tracking-widest">
+      <a href="/" class="hover:text-orange-500 transition-colors">Inicio</a> 
+      <span class="mx-2">/</span> 
+      <a href="/productos" class="hover:text-orange-500 transition-colors">Catálogo</a> 
+      <span class="mx-2">/</span> 
       <span class="text-slate-800">{producto.data.category}</span>
     </nav>
 
-    <h1 class="text-4xl font-bold text-slate-900 mb-4">
-      {producto.data.title}
-    </h1>
-    
-    <p class="text-xl text-slate-600 mb-8 italic">
-      {producto.data.description}
-    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start mb-16">
+      
+      <div class="bg-slate-50 rounded-2xl border border-slate-100 p-8 flex items-center justify-center aspect-square overflow-hidden shadow-inner relative">
+        {producto.data.image ? (
+          <Image 
+            src={producto.data.image} 
+            alt={`Fotografía de ${producto.data.title}`}
+            width={600}
+            height={600}
+            class="w-full h-full object-contain max-h-[450px]"
+            loading="eager" 
+          />
+        ) : (
+          <div class="text-slate-300 font-bold uppercase tracking-widest text-xs">Sin imagen disponible</div>
+        )}
+      </div>
 
-    <EquipmentTable 
-      title="Especificaciones Técnicas"
-      headers={["Parámetro", "Detalle"]}
-      rows={producto.data.specs}
-    />
+      <div class="flex flex-col h-full justify-center">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-1.5 h-4 bg-orange-500 rounded-full"></span>
+          <span class="text-xs font-black text-orange-500 uppercase tracking-widest">{producto.data.category}</span>
+        </div>
 
-    <article class="prose prose-slate max-w-none my-12">
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase tracking-tight">
+          {producto.data.title}
+        </h1>
+        
+        <p class="text-lg text-slate-600 mb-8 leading-relaxed italic border-l-4 border-slate-200 pl-4">
+          "{producto.data.description}"
+        </p>
+
+        <a 
+          href="#contacto" 
+          class="inline-flex items-center justify-center self-start bg-orange-500 text-white font-black uppercase tracking-widest text-xs px-8 py-4 rounded-xl hover:bg-slate-900 hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-orange-500/20"
+        >
+          Cotizar Equipo →
+        </a>
+      </div>
+    </div>
+
+    <div class="my-12">
+      <EquipmentTable 
+        title="Especificaciones Técnicas"
+        headers={["Parámetro", "Detalle"]}
+        rows={producto.data.specs}
+      />
+    </div>
+
+    <article class="prose prose-slate max-w-none my-16 prose-headings:font-black prose-headings:uppercase prose-headings:tracking-tight prose-a:text-orange-500 hover:prose-a:text-slate-900">
       <Content />
     </article>
 
-    <ContactBanner />
+    <div id="contacto">
+      <ContactBanner />
+    </div>
   </main>
 </Layout>
