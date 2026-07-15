@@ -11,6 +11,7 @@ export default defineConfig({
   redirects: {
     '/productos/mzf-30n': '/productos/mzf-30c',
     '/productos/mzf-50n': '/productos/mzf-30n_50n',
-    '/Fpb20e-fibra20w': '/fpb20-fibra20w'
+    '/Fpb20e-fibra20w': '/fpb20-fibra20w',
+    '/contacto': '/soporte'
   }
 });
