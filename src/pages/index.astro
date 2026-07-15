@@ -1,5 +1,5 @@
 ---
-// 
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro'; 
@@ -11,12 +11,15 @@ import { getCollection } from 'astro:content';
 const todosLosProductos = await getCollection('productos');
 ---
 
-<Layout title="Gravocom">
-    <Hero /> 
-    <main>
-      <TrustBar /> 
-      <Applications />
-      <Equipment />
-      <ContactBanner />
+<Layout 
+  title="Gravocom | Marcado Láser y Limpieza de Fibra Industrial"
+  description="Fabricantes de equipos de marcado y limpieza láser de fibra óptica. Soluciones de trazabilidad, integración en líneas de producción y seguridad en México."
+>
+  <Hero /> 
+  <main>
+    <TrustBar /> 
+    <Applications />
+    <Equipment />
+    <ContactBanner />
   </main>
 </Layout>

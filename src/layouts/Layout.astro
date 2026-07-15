@@ -9,7 +9,6 @@ const {
   title = SEO_DEFAULTS.title, 
   description = SEO_DEFAULTS.description 
 } = Astro.props;
-
 ---
 
 <!DOCTYPE html>
@@ -18,8 +17,8 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <SEO title={title} description={description} />
-    </head>
-<body>
+</head> 
+<body class="bg-white text-slate-950 antialiased"> 
     <Navbar />
     <slot />
     <Footer />
