@@ -3,9 +3,9 @@ slug: "mzf-50n"
 title: "Serie MZF 50N"
 description: "Potencia intermedia para grabado profundo y materiales de mayor densidad."
 category: "Marcado Láser"
-image: "/images/mzf-50n.jpg"
+image: "../../assets/MZF30N_autofocus.jpg"
 specs:
-  - ["Potencia", "50W"]
+  - ["Potencia", "30W y 50W"]
   - ["Fuente Láser", "Raycus / MaxPhotonics"]
   - ["Área de Grabado", "110 x 110 mm"]
   - ["Enfriamiento", "Aire"]

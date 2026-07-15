@@ -1,12 +1,16 @@
 ---
 // src/components/Equipment.astro
+import { Image } from 'astro:assets';
+import imgMZF30C from '../assets/MZF30C.jpg';
+import imgFpb20e from '../assets/Fpb20e-fibra20w.png';
+
 const products = [
   {
     title: "Marcadora Láser Fibra Óptica",
     series: "Serie MZF 30N / 50N / 100N",
     source: "Raycus / MaxPhotonics",
     features: ["Marcado profundo", "Integración en línea", "Enfriamiento por aire"],
-    image: "/assets/MZF30C.jpg", 
+    image: imgMZF30C, 
     url: "marcado-laser",
     primary: false
   },
@@ -15,7 +19,7 @@ const products = [
     series: "Fpb20e fibra20w",
     source: "",
     features: ["Ultra portatil","Doble funcionalidad (marcado en escritorio y marcado en mano) ", "Área de grabado de 100x100mm"],
-    image: "/assets/Fpb20e-fibra20w.png",
+    image: imgFpb20e, 
     url: "Fpb20e-fibra20w",
     primary: true
   }
@@ -46,8 +50,16 @@ const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
       {products.map(p => (
         <div class={`group relative bg-white border-2 transition-all duration-500 rounded-3xl overflow-hidden flex flex-col ${p.primary ? 'border-orange-500 shadow-2xl shadow-orange-500/10 scale-105 z-10' : 'border-slate-200 hover:border-slate-900 shadow-xl'}`}>
           
-          <div class="relative h-full bg-slate-200 overflow-hidden">
-            <img src={p.image} alt={p.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+         
+          <div class="relative aspect-[4/3] bg-slate-200 overflow-hidden">
+         
+            <Image 
+              src={p.image} 
+              alt={p.title} 
+              width={600}
+              height={450}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
             
             {p.primary && (
@@ -67,10 +79,12 @@ const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
             </h3>
             
             <div class="space-y-4 mb-8 flex-grow">
-              <div class="flex items-center gap-2 pb-3 border-b border-slate-100">
-                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tecnología:</span>
-                <span class="text-xs font-bold text-slate-700 italic">{p.source}</span>
-              </div>
+              {p.source && (
+                <div class="flex items-center gap-2 pb-3 border-b border-slate-100">
+                  <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tecnología:</span>
+                  <span class="text-xs font-bold text-slate-700 italic">{p.source}</span>
+                </div>
+              )}
               
               <ul class="space-y-2">
                 {p.features.map(f => (

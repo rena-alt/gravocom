@@ -3,7 +3,7 @@ slug: "lector-codigos-industrial-ip54"
 title: "Lector de Códigos Industrial 1D/2D"
 description: "Escáner inalámbrico de alta precisión con protección IP54 para entornos industriales exigentes."
 category: "Accesorios de Trazabilidad"
-image: "/images/lector-ip54.jpg"
+image: "../../assets/laser_cleaner-100W.jpg"
 specs:
   - ["Tipo de Sensor", "CMOS de alta resolución"]
   - ["Simbologías", "1D (Code 128, EAN) y 2D (QR, Data Matrix)"]

@@ -1,5 +1,7 @@
 ---
-// src/components/Navbar.astro
+import { Image } from 'astro:assets';
+import logoGravocom from '../assets/gravocom-logo-white.svg'; 
+
 const phone = "525523007699"; 
 const message = encodeURIComponent("Hola, me interesa recibir información y una cotización sobre los equipos de Gravocom.");
 const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
@@ -17,7 +19,12 @@ const navItems = [
     
     <div class="shrink-0">
       <a href="/" class="flex items-center group">
-        <img src="/assets/gravocom-logo-white.svg" alt="Gravocom Logo" class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105" />
+        {/* 2. Reemplazamos la etiqueta <img> por <Image /> */}
+        <Image 
+          src={logoGravocom} 
+          alt="Gravocom Logo" 
+          class="h-10 md:h-12 w-auto transition-transform group-hover:scale-105"
+        />
       </a>
     </div>
 
@@ -51,6 +58,7 @@ const navItems = [
     </button>
   </div>
 
+  {/* Menú móvil... (se queda exactamente igual) */}
   <div id="mobile-menu" class="fixed inset-0 bg-slate-950/95 backdrop-blur-md translate-x-full transition-transform duration-500 lg:hidden flex flex-col items-center justify-center z-[1100]">
     <button id="close-btn" class="absolute top-8 right-8 text-white p-4 uppercase font-black tracking-widest text-xs">Cerrar [X]</button>
     
@@ -75,7 +83,6 @@ const navItems = [
   const menuBtn = document.getElementById('menu-btn');
   const closeBtn = document.getElementById('close-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  const bars = menuBtn?.querySelectorAll('span');
 
   const toggleMenu = () => {
     mobileMenu?.classList.toggle('translate-x-full');

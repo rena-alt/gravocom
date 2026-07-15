@@ -1,13 +1,17 @@
 ---
-// src/components/Hero.astro
+import { Image } from 'astro:assets';
+import bgHero from '../assets/industrial-craft.jpeg'; 
 ---
+
 <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-950">
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent z-10"></div>
-    <img 
-      src="/assets/industrial-craft.jpeg" 
+    
+    <Image 
+      src={bgHero} 
       alt="Industrial Laser Craft" 
       class="w-full h-full object-cover opacity-40"
+      loading="eager" 
     />
   </div>
 

@@ -1,9 +1,9 @@
 ---
 slug: "mzf-30n"
-title: "Serie MZF 30N"
+title: "Serie MZF 30C"
 description: "Sistema láser de fibra optimizado para integración en línea y marcado estándar."
 category: "Marcado Láser"
-image: "/images/mzf-30n.jpg"
+image: "../../assets/MZF30C.jpg"
 specs:
   - ["Potencia", "30W"]
   - ["Fuente Láser", "Raycus / MaxPhotonics"]
@@ -13,4 +13,4 @@ specs:
 ---
 
 # Precisión y Eficiencia
-El modelo **MZF-30N** es la solución ideal para empresas que buscan integrar marcado láser en sus líneas de producción existentes. Ofrece un equilibrio perfecto entre costo y rendimiento para marcados de alta velocidad.
+El modelo **MZF-30C** es la solución ideal para empresas que buscan integrar marcado láser en sus líneas de producción existentes. Ofrece un equilibrio perfecto entre costo y rendimiento para marcados de alta velocidad.

@@ -5,7 +5,7 @@ series: "Serie Handheld Hybrid"
 source: "Tecnología de Fibra Gravocom"
 description: "Equipo versátil con doble funcionalidad que permite el marcado estable en escritorio y la movilidad para piezas de gran tamaño en modo manual."
 category: "Marcado Láser"
-image: "/assets/Fpb20e-fibra20w.png"
+image: "../../assets/Fpb20e-fibra20w.png"
 specs: 
   - ["Área de Grabado", "100x100mm"]
   - ["Doble Uso", "Escritorio / Manual"]

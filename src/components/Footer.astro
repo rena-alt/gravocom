@@ -1,8 +1,10 @@
 ---
 // src/components/Footer.astro
 import { Icon } from 'astro-icon/components';
-const currentYear = new Date().getFullYear();
+import { Image } from 'astro:assets';
+import logoGravocom from '../assets/gravocom-logo-white.svg'; 
 
+const currentYear = new Date().getFullYear();
 
 const socialLinks = [
   { name: "LinkedIn", url: "https://www.linkedin.com/posts/carlos-ortiz-medina_gravocom-lasermarker-laser-share-7424569695137206272-TqQK", icon: "mdi:linkedin" },
@@ -18,7 +20,12 @@ const socialLinks = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
       
       <div class="lg:col-span-1">
-        <img src="/assets/gravocom-logo-white.svg" alt="Gravocom Logo" class="h-12 mb-6" />
+        {/* 2. Reemplazamos la etiqueta <img> vieja por la versión optimizada de Astro */}
+        <Image 
+          src={logoGravocom} 
+          alt="Gravocom Logo" 
+          class="h-12 w-auto mb-6" 
+        />
         <p class="text-sm leading-relaxed mb-8 italic">
           Expertos en marcado, asesoría técnica y desarrollo de aplicaciones láser para la industria nacional con estándares globales.
         </p>

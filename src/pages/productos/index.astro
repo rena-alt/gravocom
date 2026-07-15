@@ -1,10 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+// 1. Importamos el componente nativo de optimización de imágenes
+import { Image } from 'astro:assets';
 
 const productos = await getCollection('productos');
 
-// Separamos por categorías para crear secciones visuales distintas
 const equiposLaser = productos.filter(p => p.data.category === 'Marcado Láser');
 const accesorios = productos.filter(p => p.data.category === 'Accesorios de Trazabilidad');
 ---
@@ -39,11 +40,22 @@ const accesorios = productos.filter(p => p.data.category === 'Accesorios de Traz
       <div class="grid md:grid-cols-3 gap-8">
         {equiposLaser.map(producto => (
           <a href={`/productos/${producto.slug}`} class="group relative bg-white border border-slate-200 p-8 rounded-2xl hover:border-orange-500 transition-all hover:shadow-2xl hover:shadow-orange-500/10">
+            
+            {/* 2. Reemplazamos el contenedor gris por la Imagen real */}
             <div class="mb-6 aspect-video bg-slate-50 rounded-lg flex items-center justify-center overflow-hidden">
-               <span class="text-slate-300 font-bold text-xs uppercase tracking-widest group-hover:scale-110 transition-transform">
-                Preview {producto.data.title}
-               </span>
+               {producto.data.image ? (
+                 <Image 
+                   src={producto.data.image} 
+                   alt={producto.data.title}
+                   width={400}
+                   height={225}
+                   class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                 />
+               ) : (
+                 <span class="text-slate-300 font-bold text-xs uppercase tracking-widest">Sin imagen</span>
+               )}
             </div>
+
             <h3 class="text-2xl font-black text-slate-900 mb-2 group-hover:text-orange-500 transition-colors uppercase">
               {producto.data.title}
             </h3>
@@ -73,6 +85,20 @@ const accesorios = productos.filter(p => p.data.category === 'Accesorios de Traz
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {accesorios.map(producto => (
                   <a href={`/productos/${producto.slug}`} class="group bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 hover:border-orange-500 transition-all">
+                    
+                    {/* 3. OPCIONAL: Si también quieres miniatura en Accesorios */}
+                    {producto.data.image && (
+                      <div class="mb-4 aspect-video bg-white/5 rounded-lg overflow-hidden">
+                        <Image 
+                          src={producto.data.image} 
+                          alt={producto.data.title}
+                          width={300}
+                          height={168}
+                          class="w-full h-full object-contain p-2"
+                        />
+                      </div>
+                    )}
+
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="text-xl font-bold text-white group-hover:text-orange-500 transition-colors uppercase leading-tight">
                             {producto.data.title}

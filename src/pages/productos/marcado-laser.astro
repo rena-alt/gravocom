@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import ContactBanner from '../../components/ContactBanner.astro';
+// 1. Importamos el componente de optimización nativo
+import { Image } from 'astro:assets';
 
 // Filtramos solo los productos que pertenecen a esta categoría
 const productosLaser = await getCollection('productos', ({ data }) => {
@@ -25,7 +27,7 @@ const productosLaser = await getCollection('productos', ({ data }) => {
         Sistemas de <span class="text-orange-500">Marcado Láser</span>
       </h1>
       <p class="text-xl text-slate-600 max-w-3xl leading-relaxed">
-        Tecnología de fibra óptica de alta precisión diseñada para integración en líneas de producción, grabado profundo y trazabilidad permanente en metales y plásticos industriales.
+        Tecnología de fibra óptica de alta precisión diseñada para integración en líneas de producción, grabado profundo y trazabilidad permanente en metales y plásticos industriales[cite: 1].
       </p>
     </header>
 
@@ -33,9 +35,21 @@ const productosLaser = await getCollection('productos', ({ data }) => {
       {productosLaser.map(producto => (
         <article class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-orange-500 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-300 flex flex-col">
           
-          <div class="aspect-square bg-slate-100 flex items-center justify-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/5 transition-colors"></div>
-            <span class="text-slate-400 font-bold uppercase tracking-widest text-xs">Visualizar {producto.data.title}</span>
+          {/* 2. Reemplazamos el contenedor gris por la imagen real optimizada */}
+          <div class="aspect-square bg-slate-50 flex items-center justify-center relative overflow-hidden p-6 border-b border-slate-100">
+            <div class="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/5 transition-colors z-10 pointer-events-none"></div>
+            
+            {producto.data.image ? (
+              <Image 
+                src={producto.data.image} 
+                alt={producto.data.title}
+                width={400}
+                height={400}
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <span class="text-slate-300 font-bold uppercase tracking-widest text-xs">Sin imagen</span>
+            )}
           </div>
 
           <div class="p-8 flex-1 flex flex-col">
@@ -71,10 +85,10 @@ const productosLaser = await getCollection('productos', ({ data }) => {
         <h3 class="text-2xl font-black text-slate-900 mb-4 uppercase tracking-tight">¿Por qué elegir nuestra Serie MZF?</h3>
         <ul class="space-y-4">
           {[
-            "Fuentes Raycus / MaxPhotonics de larga vida útil (100k hrs).",
-            "Sistemas de enfriamiento por aire altamente eficientes.",
-            "Fácil integración en software de trazabilidad industrial.",
-            "Soporte técnico especializado en México."
+            "Fuentes Raycus / MaxPhotonics de larga vida útil (100k hrs)[cite: 1].",
+            "Sistemas de enfriamiento por aire altamente eficientes[cite: 1].",
+            "Fácil integración en software de trazabilidad industrial[cite: 1].",
+            "Soporte técnico especializado en México[cite: 1]."
           ].map(item => (
             <li class="flex items-start gap-3 text-slate-700">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
